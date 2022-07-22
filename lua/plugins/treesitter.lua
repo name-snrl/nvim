@@ -1,0 +1,54 @@
+Load'nvim-treesitter.configs'.setup {
+  ensure_installed = {
+    'bash',
+    'lua',
+    'python',
+    'nix',
+    'vim',
+    'go',
+    'c',
+    'rust',
+
+    'css',
+    'yaml',
+    'markdown', 'markdown_inline',
+  },
+
+  highlight = { enable = true },
+
+  --incremental_selection = {
+  --  enable = true,
+  --  keymaps = {
+  --    init_selection = "gnn",
+  --    node_incremental = "grn",
+  --    scope_incremental = "grc",
+  --    node_decremental = "grm",
+  --  },
+  --},
+
+  --textobjects = {
+  --  select = {
+  --    enable = true,
+  --    lookahead = true,
+  --    lookbehind = true,
+  --    keymaps = {
+  --      ["aa"] = "@parameter.outer",
+  --      ["ia"] = "@parameter.inner",
+  --      ["ib"] = "@block.inner",
+  --      ["ab"] = "@block.outer",
+  --    },
+  --  },
+  --  move = {
+  --    enable = true,
+  --    goto_previous_start = {
+  --      ["[b"] = "@block.outer",
+  --    },
+  --  },
+  --},
+
+  rainbow = {
+    enable = true,
+    extended_mode = true,
+    max_file_lines = nil,
+  },
+}

@@ -99,7 +99,11 @@ local function create_link ()
     create_md_file(link)
   end
 
-  cmd('exe "normal! ciw[\\<C-r>\\"](' .. link .. ')"')
+  if a.nvim_get_mode().mode == 'v' then
+    cmd('exe "normal! c[\\<C-r>\\"](' .. link .. ')"')
+  else
+    cmd('exe "normal! ciw[\\<C-r>\\"](' .. link .. ')"')
+  end
 end
 
 -- Rename the <cfile> and all references to it in
@@ -441,6 +445,10 @@ Load'core.utils'.create_autocmds {
       end
     end,
   },
+}
+
+Load'core.utils'.set_hls {
+  DiagnosticVirtualTextHint = { link = 'Comment' }
 }
 
 -- plugins

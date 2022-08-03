@@ -102,7 +102,7 @@ local function create_link ()
   if a.nvim_get_mode().mode == 'v' then
     cmd('exe "normal! c[\\<C-r>\\"](' .. link .. ')"')
   else
-    cmd('exe "normal! ciw[\\<C-r>\\"](' .. link .. ')"')
+    cmd('exe "normal! hciw[\\<C-r>\\"](' .. link .. ')"')
   end
 end
 
@@ -408,8 +408,8 @@ Load'core.utils'.set_maps {
   ['i'] = {
 
     { '<C-l>', create_link },
-    { '<C-j>', '<Esc>uA' },
-    { '<C-k>', '<Esc><C-r>A' },
+    { '<C-j>', '<Cmd>undo<CR>' },
+    { '<C-k>', '<Cmd>redo<CR>' },
 
     -- auto new undoable edit
     { '<Space>', '<C-G>u<Space>' },

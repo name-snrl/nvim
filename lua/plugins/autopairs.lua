@@ -1,5 +1,6 @@
 local np = require 'nvim-autopairs'
 local rl = require 'nvim-autopairs.rule'
+local cond = require'nvim-autopairs.conds'
 
 np.setup {
   disable_in_macro = true,
@@ -14,80 +15,96 @@ np.setup {
   },
 }
 
--- TODO set-up better autopair for markdown
+np.add_rules {
+  rl(' ', ' ', '-markdown')
+    :with_pair(function (opts)
+      local pair = opts.line:sub(opts.col - 1, opts.col)
+      return vim.tbl_contains({ '()', '[]', '{}' }, pair)
+    end),
+  rl('( ', ' )', '-markdown')
+      :with_pair(function() return false end)
+      :with_move(function(opts)
+          return opts.prev_char:match('.%)') ~= nil
+      end)
+      :use_key(')'),
+  rl('{ ', ' }', '-markdown')
+      :with_pair(function() return false end)
+      :with_move(function(opts)
+          return opts.prev_char:match('.%}') ~= nil
+      end)
+      :use_key('}'),
+  rl('[ ', ' ]', '-markdown')
+      :with_pair(function() return false end)
+      :with_move(function(opts)
+          return opts.prev_char:match('.%]') ~= nil
+      end)
+      :use_key(']')
+}
+
 np.add_rules {
   rl('_', '_', 'markdown')
     :with_move(function(opts)
-      local count = 0
-      for _ in opts.text:gmatch('_') do
-        count = count + 1
-      end
-      if count == 3 and #opts.text > 3 then
-        return true
-      end
-      return false
+      -- if prev char is not pair
+      return opts.line:sub(opts.col - 1, opts.col - 1) ~= '_'
     end),
 
   rl('__', '__', 'markdown')
-    :with_pair(function() return false end)
+    :with_pair(cond.none())
     :with_move(function(opts)
       return opts.prev_char:match('._') ~= nil
-    end)
-    :use_key('_'),
+    end),
 
   rl('*', '*', 'markdown')
     :with_move(function(opts)
-      local count = 0
-      for _ in opts.text:gmatch('*') do
-        count = count + 1
-      end
-      if count == 3 and #opts.text > 3 then
-        return true
-      end
-      return false
+      -- if prev char is not pair
+      return opts.line:sub(opts.col - 1, opts.col - 1) ~= '*'
     end),
 
   rl('**', '**', 'markdown')
-    :with_pair(function() return false end)
+    :with_pair(cond.none())
     :with_move(function(opts)
       return opts.prev_char:match('.%*') ~= nil
-    end)
-    :use_key('*'),
+    end),
 
   rl('$', '$', 'markdown')
     :with_move(function(opts)
-      local count = 0
-      for _ in opts.text:gmatch('%$') do
-        count = count + 1
-      end
-      if count == 3 and #opts.text > 3 then
-        return true
-      end
-      return false
+      -- if prev char is not pair
+      return opts.line:sub(opts.col - 1, opts.col - 1) ~= '$'
     end),
 
   rl('$$', '$$', 'markdown')
-    :with_pair(function() return false end)
+    :with_pair(cond.none())
     :with_move(function(opts)
       return opts.prev_char:match('.%$') ~= nil
-    end)
-    :use_key('$'),
-  rl(' ', ' ')
-    :with_pair(function (opts)
-      local pair = opts.line:sub(opts.col - 1, opts.col)
-      return vim.tbl_contains({ '$$' }, pair)
     end),
-  rl('$ ', ' $')
-      :with_pair(function() return false end)
-      :replace_endpair(function(opts)
-        if opts.line:sub(opts.col + 1):match('^%$') then
-          return ' $$'
-        else
-          return ' $'
-        end
-      end)
-      :with_move(function(opts)
-          return opts.prev_char:match('.%$') ~= nil
-      end)
-      :use_key('$'),
+
+  -- TODO set-up spaces between pairs for markdown
+  -- so that it does not end other pairs with a space.
+
+  --rl(' ', ' ', 'markdown')
+  --  :with_pair(function(opts)
+  --    local pair = opts.line:sub(opts.col -1, opts.col)
+  --    return vim.tbl_contains({ '$$' }, pair)
+  --  end)
+  --  :with_move(cond.none())
+  --  :with_cr(cond.none())
+  --  :with_del(function(opts)
+  --    local col = vim.api.nvim_win_get_cursor(0)[2]
+  --    local context = opts.line:sub(col - 1, col + 2)
+  --    return vim.tbl_contains({ '$  $' }, context)
+  --  end),
+
+  --rl('', ' $', 'markdown')
+  --  :with_pair(cond.none())
+  --  :with_move(function(opts) return opts.char == '$' end)
+  --  :with_cr(cond.none())
+  --  :with_del(cond.none())
+  --  :use_key('$'),
+
+  --rl('', ' $$', 'markdown')
+  --  :with_pair(cond.none())
+  --  :with_move(function(opts) return opts.char == '$' end)
+  --  :with_cr(cond.none())
+  --  :with_del(cond.none())
+  --  :use_key('$'),
 }

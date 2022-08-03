@@ -100,6 +100,7 @@ return packer.startup(function(use)
 
 
   -- Navigation
+  --use 'ThePrimeagen/harpoon' -- if alternate or marks are not enough
   use 'moll/vim-bbye'
   -- TODO set up and start to use plugins above
   --use 'simnalamburt/vim-mundo'  -- undotree navigation, try this first

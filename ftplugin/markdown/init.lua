@@ -440,7 +440,7 @@ Load'core.utils'.create_autocmds {
         local pos = fn.winline()
         if pos > h then
           local offset = pos - h
-          cmd('exe "norm ' .. offset .. '\\<C-e>"')
+          cmd('exe "normal! ' .. offset .. '\\<C-e>"')
         end
       end
     end,

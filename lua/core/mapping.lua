@@ -101,6 +101,7 @@ Load'core.utils'.set_maps {
     { '<C-_>',      '<C-^>' }, -- swap to alternate
     { '<C-w>/',     '<Cmd>vsp #<CR>' },       -- alternate to a split window
     { '<C-w><C-_>', '<Cmd>tab split #<CR>' }, -- alternate to a new tab
+    { '<C-w>f',     '<Cmd>vsp <cfile><CR>' }, -- the same as the default, but in the vertical split
 
     -- Windows managment
     { '<Left>',  '<C-w>h' },

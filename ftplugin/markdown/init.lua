@@ -412,10 +412,10 @@ Load'core.utils'.set_maps {
     { '<C-k>', '<Cmd>redo<CR>' },
 
     -- auto new undoable edit
-    { '<Space>', '<C-G>u<Space>' },
-    { '<C-m>',   '<C-G>u<C-m>' },
-    { '<C-w>',   '<C-G>u<C-w>' },
-    { '<C-u>',   '<C-G>u<C-u>' },
+    { '<Space>', '<C-g>u<Space>' },
+    { '<C-m>',   '<C-g>u<C-m>' },
+    { '<C-w>',   '<C-g>u<C-w>' },
+    { '<C-u>',   '<C-g>u<C-u>' },
   },
   [{'n', 'x'}] = {
 

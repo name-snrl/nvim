@@ -41,6 +41,8 @@ np.add_rules {
       :use_key(']')
 }
 
+-- TODO change the opening pairs from '_' to '^_' and ' _' so that the role is
+-- only called after a space or at the beginning of a line.
 np.add_rules {
   rl('_', '_', 'markdown')
     :with_move(function(opts)

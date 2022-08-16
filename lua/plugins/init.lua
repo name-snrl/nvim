@@ -71,7 +71,7 @@ return packer.startup(function(use)
   --use "L3MON4D3/LuaSnip"              -- snippet engine
   --use "rafamadriz/friendly-snippets"  -- a bunch of snippets to use
   use {
-    'windwp/nvim-autopairs', commit = '8d5e46cd27fd35104d1698a5bd08f48954a15d6f',
+    'windwp/nvim-autopairs',
     config = function() Load'plugins.autopairs' end,
   }
 

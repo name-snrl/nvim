@@ -440,7 +440,9 @@ Load'core.utils'.create_autocmds {
         local pos = fn.winline()
         if pos > h then
           local offset = pos - h
-          cmd('exe "normal! ' .. offset .. '\\<C-e>"')
+          local winpos = vim.fn.winsaveview()
+          winpos.topline = winpos.topline + offset
+          vim.fn.winrestview(winpos)
         end
       end
     end,

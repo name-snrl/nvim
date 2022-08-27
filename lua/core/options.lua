@@ -4,6 +4,7 @@ Load'core.utils'.set_opts {
 
   timeout = false,
   clipboard = '+=unnamedplus',
+  mouse = '',
 
   -- appearance
   cursorline = true,

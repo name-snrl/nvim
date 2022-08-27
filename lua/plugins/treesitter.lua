@@ -12,6 +12,7 @@ Load'nvim-treesitter.configs'.setup {
     'css',
     'yaml',
     'markdown', 'markdown_inline',
+    'dockerfile',
   },
 
   highlight = { enable = true },

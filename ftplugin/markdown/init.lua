@@ -395,7 +395,6 @@ end
 Load'core.utils'.set_opts_local {
   conceallevel = 2,
   textwidth = 80,
-  wrap = false,
   undolevels = 10000,
   keymap = 'russian-markdown',
 }

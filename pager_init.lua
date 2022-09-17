@@ -14,7 +14,7 @@ vim.opt.runtimepath:prepend(
 )
 
 do -- use colors from difftool
-  local cmd = 'cat /proc/' .. vim.env.PARENT .. '/cmdline'
+  local cmd = 'echo "$( < /proc/' .. vim.env.PARENT .. '/cmdline)"'
   if vim.fn.system(cmd):match('difftool') then
     nvimpager.git_colors = true
   end

@@ -144,6 +144,10 @@ return packer.startup(function(use)
 
   -- Misc
   use 'norcalli/nvim-colorizer.lua'
+  use {
+    'ojroques/nvim-osc52',
+    config = function() Load'plugins.ssh_clipboard' end,
+  }
   --use 'tpope/vim-obsession'                   -- auto :mksession
   --use 'antoinemadec/FixCursorHold.nvim'       -- not sure I need this
 

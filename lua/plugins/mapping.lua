@@ -25,11 +25,7 @@ Load'core.utils'.set_maps {
     { '<Leader>/', tel_built.current_buffer_fuzzy_find },
     { '<Leader>g', tel_built.live_grep },
     { '<Leader>j', function() tel_built.jumplist({ fname_width = 999 }) end },
-    { '<Leader>f', function ()
-      if not pcall(tel_built.git_files, { hidden=true }) then
-        tel_built.find_files()
-      end
-    end },
+    { '<Leader>f', function() tel_built.find_files({ follow = true }) end },
 
     { '<Leader>c', '<Cmd>ColorizerReloadAllBuffers<CR>' },
 

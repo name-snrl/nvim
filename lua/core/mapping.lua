@@ -33,6 +33,7 @@ local rec_opts = { remap = true } -- :h recursive_mapping
 --      GLOBAL
 -- Leader    -- b c e f g j q z /
 -- <C-\>     -- c f o t
+-- gs
 --
 --      LOCAL
 -- Leader    -- e

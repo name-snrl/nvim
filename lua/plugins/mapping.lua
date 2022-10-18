@@ -8,10 +8,12 @@ local tel = Load'telescope'
 --      GLOBAL
 -- Leader    -- b c e f g j m q z /
 -- <C-\>     -- c f o t
+-- gs
 --
 --      LOCAL
 -- Leader    -- b c f g j m q z /
 -- <C-\>     -- c f t
+-- gs
 --
 -- p.s. Leader is only used in n, x mode. <C-\> can be used in any mode
 
@@ -34,11 +36,7 @@ Load'core.utils'.set_maps {
   },
 
   [{ 'n', 'x', 'o' }] = {
-    { 'f', function() Load 'leap'.leap { inclusive_op = true } end },
-    { 'F', function() Load 'leap'.leap { backward = true } end },
-    { 't', function() Load 'leap'.leap { inclusive_op = true, offset = -1 } end },
-    { 'T', function() Load 'leap'.leap { backward = true, offset = 1 } end },
-    -- TODO implement the behavior of the builin ; and ,
+    { 'gs', function() Load 'leap'.leap { target_windows =  {vim.api.nvim_get_current_win()} } end },
   },
 
   [{ 'n', 'x', 'i', 't' }] = {

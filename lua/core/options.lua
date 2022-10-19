@@ -8,6 +8,7 @@ Load'core.utils'.set_opts {
 
   -- appearance
   cursorline = true,
+  signcolumn = 'yes',
   laststatus = 3,
   list = true,
   listchars = 'tab: ━❯',
@@ -20,11 +21,6 @@ Load'core.utils'.set_opts {
   -- cmdline-completion
   wildmode = 'longest:full,full',
   wildignorecase = true,
-
-  -- number/sign columns
-  relativenumber = true,
-  signcolumn = 'yes',
-  numberwidth = 2,
 
   -- search
   wrapscan = false,

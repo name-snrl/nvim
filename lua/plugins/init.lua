@@ -145,6 +145,10 @@ return packer.startup(function(use)
   -- Misc
   use 'norcalli/nvim-colorizer.lua'
   use {
+    'elkowar/yuck.vim',
+    config = function() Load'plugins.yuck' end,
+  }
+  use {
     'ojroques/nvim-osc52',
     config = function() Load'plugins.ssh_clipboard' end,
   }

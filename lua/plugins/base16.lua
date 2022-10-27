@@ -63,12 +63,12 @@ hl.Repeat             = { guifg = cl.base0A, guibg = nil, gui = 'bold', guisp = 
 hl.TSRepeat           = { guifg = cl.base0A, guibg = nil, gui = 'bold', guisp = nil }
 
 
-hl.TSTitle         = { guifg = 'none', gui = 'bold' }
-hl.TSEmphasis      = { guifg = 'none', gui = 'italic' }
-hl.TSURI           = { guifg = cl.base0D, gui = 'italic' }
-hl.TSTextReference = { guifg = cl.base0D }
-hl.TSStringEscape  = { guifg = cl.base03 }
-hl.TSPunctSpecial  = { guifg = cl.base08 }
+hl['@text.title']          = { guifg = 'none', gui = 'bold' }
+hl['@text.emphasis']       = { guifg = 'none', gui = 'italic' }
+hl['@text.uri']            = { guifg = cl.base0D, gui = 'italic' }
+hl['@text.reference']      = { guifg = cl.base0D }
+hl['@string.escape']       = { guifg = cl.base03 }
+hl['@punctuation.special'] = { guifg = cl.base08 }
 
 hl.TelescopeBorder       = { guifg = darker02,  guibg = darkerbg }
 hl.TelescopeNormal       = { guifg = nil,       guibg = darkerbg }

@@ -79,7 +79,7 @@ M.set_maps = function (mapping, arg1, arg2)
 
         local opts = options or {}
         if v[3] then
-          opts = vim.tbl_extend('keep', v[3], opts)
+          opts = vim.tbl_deep_extend('keep', v[3], opts)
         end
 
         vim.keymap.set(mode, lhs, rhs, opts)
@@ -103,7 +103,7 @@ end
 M.create_autocmds = function (cmds, opts)
   for events, lopts in pairs(cmds) do
     if opts then
-      lopts = vim.tbl_extend('keep', lopts, opts)
+      lopts = vim.tbl_deep_extend('keep', lopts, opts)
     end
     if type(lopts.group) == 'string' then
       lopts.group = vim.api.nvim_create_augroup(lopts.group, { clear = false })

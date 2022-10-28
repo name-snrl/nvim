@@ -451,6 +451,3 @@ Load'core.utils'.create_autocmds {
 Load'core.utils'.set_hls {
   DiagnosticVirtualTextHint = { link = 'Comment' }
 }
-
--- plugins
-Load'indent_blankline.commands'.disable()

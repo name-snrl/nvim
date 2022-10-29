@@ -15,10 +15,6 @@ Load'plugins.incline'
 Load'plugins.leap'
 Load 'core.utils'.set_maps {
   [{ 'n', 'x', 'o' }] = {
-    { 'f', function() Load 'leap'.leap { inclusive_op = true } end },
-    { 'F', function() Load 'leap'.leap { backward = true } end },
-    { 't', function() Load 'leap'.leap { inclusive_op = true, offset = -1 } end },
-    { 'T', function() Load 'leap'.leap { backward = true, offset = 1 } end },
-    -- TODO implement the behavior of the builin ; and ,
+    { 'gs', function() Load 'leap'.leap { target_windows =  {vim.api.nvim_get_current_win()} } end },
   },
 }

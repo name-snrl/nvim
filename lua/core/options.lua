@@ -11,7 +11,7 @@ Load'core.utils'.set_opts {
   signcolumn = 'yes',
   laststatus = 3,
   list = true,
-  listchars = 'tab: ━❯',
+  listchars = 'tab:▸ ',
   linebreak = true,
 
   -- ins-completion

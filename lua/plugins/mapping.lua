@@ -31,8 +31,21 @@ Load'core.utils'.set_maps {
 
     { '<Leader>c', '<Cmd>ColorizerReloadAllBuffers<CR>' },
 
-    { '<Del>', '<Cmd>write<bar>Bdelete<CR><Cmd>q<CR>' },
-    { '<BS>',  '<Cmd>write<bar>Bdelete<CR>' },
+    { '<Del>', function()
+      if vim.opt.ro:get() then
+        vim.api.nvim_command 'Bdelete'
+      else
+        vim.api.nvim_command 'write | Bdelete'
+      end
+      vim.api.nvim_command 'quit'
+    end },
+    { '<BS>', function()
+      if vim.opt.ro:get() then
+        vim.api.nvim_command 'Bdelete'
+      else
+        vim.api.nvim_command 'write | Bdelete'
+      end
+    end },
   },
 
   [{ 'n', 'x', 'o' }] = {

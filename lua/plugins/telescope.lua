@@ -54,7 +54,7 @@ Load'telescope._extensions.zoxide.config'.setup {
   mappings = {
     default = {
       action = function(selection)
-        vim.cmd("tcd " .. selection.path)
+        vim.cmd("lcd " .. selection.path)
       end,
       after_action = function(selection)
         print("Directory changed to " .. selection.path)

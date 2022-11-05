@@ -1,5 +1,5 @@
-local t = Load'telescope'
-local act = Load'telescope.actions'
+local t = Load 'telescope'
+local act = Load 'telescope.actions'
 
 t.setup {
   defaults = {
@@ -50,7 +50,7 @@ t.setup {
 }
 
 t.load_extension('fzf', 'zoxide')
-Load'telescope._extensions.zoxide.config'.setup {
+Load 'telescope._extensions.zoxide.config'.setup {
   mappings = {
     default = {
       action = function(selection)

@@ -1,2 +1,2 @@
-Load'core.utils'.set_g {
+Load 'core.utils'.set_g {
 }

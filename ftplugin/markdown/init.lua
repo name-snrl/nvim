@@ -6,16 +6,16 @@ local o = vim.opt
 local a = vim.api
 local g = vim.g
 
-local function create_md_file (name)
-  if not name then name = fn.expand'<cfile>' end
+local function create_md_file(name)
+  if not name then name = fn.expand '<cfile>' end
   if not name:match('.md$') then
-    print'Add an extension to the word and try again'
+    print 'Add an extension to the word and try again'
     return
   end
   io.open(name, 'a'):close()
 end
 
-local function input (opts)
+local function input(opts)
   -- toggle to the english layout
   local kb_layout = o.iminsert:get()
   if kb_layout ~= 0 then
@@ -33,17 +33,17 @@ local function input (opts)
   return res
 end
 
-local function cursor_line ()
+local function cursor_line()
   local row, column = unpack(a.nvim_win_get_cursor(0))
   local line = a.nvim_buf_get_lines(0, row - 1, row, false)[1]
   return line, row, column
 end
 
-local function buf_content ()
+local function buf_content()
   return a.nvim_buf_get_lines(0, 0, -1, false)
 end
 
-local function toggle_layout ()
+local function toggle_layout()
   if o.iminsert:get() == 1 then
     o.iminsert = 0
   else
@@ -51,7 +51,7 @@ local function toggle_layout ()
   end
 end
 
-local function toggle_checkbox ()
+local function toggle_checkbox()
   local line, row = cursor_line()
 
   if line:match('%[ %]') then
@@ -63,25 +63,25 @@ local function toggle_checkbox ()
   end
 end
 
-local function dec_heading ()
+local function dec_heading()
   local line, row = cursor_line()
 
   if not line:match('^#') then
-    a.nvim_buf_set_text(0, row - 1, 0, row - 1, 0, {'# '})
+    a.nvim_buf_set_text(0, row - 1, 0, row - 1, 0, { '# ' })
   else
-    a.nvim_buf_set_text(0, row - 1, 0, row - 1, 0, {'#'})
+    a.nvim_buf_set_text(0, row - 1, 0, row - 1, 0, { '#' })
   end
 end
 
-local function inc_heading ()
+local function inc_heading()
   local line, row = cursor_line()
 
   if line:match('^##') then
-    a.nvim_buf_set_text(0, row - 1, 0, row - 1, 1, {''})
+    a.nvim_buf_set_text(0, row - 1, 0, row - 1, 1, { '' })
   end
 end
 
-local function create_link ()
+local function create_link()
 
   local link = input({
     prompt = 'Link to: ',
@@ -90,7 +90,7 @@ local function create_link ()
   })
 
   if not link then
-    cmd'mode' -- clear the cmd-line
+    cmd 'mode' -- clear the cmd-line
     return
   elseif not link:match('://') then
     if not link:match('.md$') then
@@ -108,9 +108,9 @@ end
 
 -- Rename the <cfile> and all references to it in
 -- the files of the current directory. Only .md files.
-local function rename ()
+local function rename()
 
-  local function get_new_name ()
+  local function get_new_name()
     local name = input({
       prompt = 'New file name: ',
       default = '',
@@ -118,7 +118,7 @@ local function rename ()
     })
 
     if not name then
-      cmd'mode' -- clear the cmd-line
+      cmd 'mode' -- clear the cmd-line
       return
     elseif not tostring(name):match('.md$') then
       name = name .. '.md'
@@ -127,24 +127,24 @@ local function rename ()
     return name
   end
 
-  local function get_old_name ()
-    local name = fn.expand'<cfile>'
+  local function get_old_name()
+    local name = fn.expand '<cfile>'
 
     if not name:match('.md$') then
-      print'The word under the cursor has no md extension'
+      print 'The word under the cursor has no md extension'
       return
     elseif not fs.find(name)[1] then
-      print'No such file'
+      print 'No such file'
       return
     elseif name == fs.basename(a.nvim_buf_get_name(0)) then
-      print"You cannot rename the current file"
+      print "You cannot rename the current file"
       return
     end
 
     return name
   end
 
-  local function substitute (old, new, file_tbl)
+  local function substitute(old, new, file_tbl)
     -- remove the current file name from the table
     local cur_file_name = fs.basename(a.nvim_buf_get_name(0))
     for i in pairs(file_tbl) do
@@ -209,10 +209,10 @@ local function rename ()
   end
 
   if substitute(old_name, new_name, file_list) and
-    os.rename(old_name, new_name) then
-    print'Successful'
+      os.rename(old_name, new_name) then
+    print 'Successful'
   else
-    print'Unexpected error'
+    print 'Unexpected error'
   end
 end
 
@@ -231,7 +231,7 @@ do
   local after = plugin_path .. '/after-body.html'
 
   -- get window position relative to the buffer(in percent)
-  local function position ()
+  local function position()
 
     local result
     local buf_row_count = a.nvim_buf_line_count(0)
@@ -263,21 +263,21 @@ do
     return tostring(math.floor(result))
   end
 
-  local function start ()
+  local function start()
     return string.format(
       'qutebrowser ":open %s;;later 1s scroll-to-perc %s"',
       tmp, position()
     )
   end
 
-  local function reload ()
+  local function reload()
     return string.format(
       'qutebrowser ":reload;;later 0.5s scroll-to-perc %s"',
       position()
     )
   end
 
-  local function pandoc ()
+  local function pandoc()
     return string.format(
       'pandoc -B %s -A %s --css=%s --css=%s ' ..
       '-f gfm+tex_math_dollars --mathjax --no-highlight %s -o %s',
@@ -290,7 +290,7 @@ do
     )
   end
 
-  local function job_checker (job, name)
+  local function job_checker(job, name)
     if job == 0 then
       print(name .. ' filed: jobstart() return 0')
       return
@@ -301,11 +301,11 @@ do
   end
 
   -- run or refresh qutebrowser
-  local function qutebrowser ()
+  local function qutebrowser()
 
-    local function run (command)
-      local job_id = fn.jobstart( command(),
-        { on_exit = function() cmd'mode' end } -- clear cmd-line
+    local function run(command)
+      local job_id = fn.jobstart(command(),
+        { on_exit = function() cmd 'mode' end }-- clear cmd-line
       )
       job_checker(job_id, 'Qutebrowser')
       if not g.qutebrowser_job_id then
@@ -314,14 +314,14 @@ do
     end
 
     if pcall(fn.jobpid, g.qutebrowser_job_id) then
-      print'Updating...'
+      print 'Updating...'
       run(reload)
     else
-      print'Starting preview...'
+      print 'Starting preview...'
       g.qutebrowser_job_id = nil
 
       if fn.system('pgrep qutebrowser') ~= '' then
-        local job_id = fn.jobstart( 'qutebrowser ":quit"',
+        local job_id = fn.jobstart('qutebrowser ":quit"',
           { on_exit = function() run(start) end }
         )
         job_checker(job_id, 'pkill')
@@ -331,7 +331,7 @@ do
     end
   end
 
-  local function buf_same (new)
+  local function buf_same(new)
     local old = g.preview_file_content
     if not old then return end
     if #old ~= #new then return end
@@ -343,9 +343,9 @@ do
     return true
   end
 
-  function run_preview ()
+  function run_preview()
     -- close the preview when exit vim
-    a.nvim_create_autocmd('ExitPre',{
+    a.nvim_create_autocmd('ExitPre', {
       callback = close_preview
     })
 
@@ -369,19 +369,19 @@ do
       g.preview_file_content = buf
 
       -- file processing
-      local job_id = fn.jobstart( pandoc(), { on_exit = qutebrowser } )
+      local job_id = fn.jobstart(pandoc(), { on_exit = qutebrowser })
       job_checker(job_id, 'Pandoc')
     end
   end
 
-  function close_preview ()
+  function close_preview()
     if g.qutebrowser_job_id then
       local was_stop = fn.jobstop(g.qutebrowser_job_id)
       if was_stop == 0 then
-        print'Invalid job id'
+        print 'Invalid job id'
       end
     else
-      print'The preview has not been started'
+      print 'The preview has not been started'
     end
     -- mark preview closed
     g.qutebrowser_job_id = nil
@@ -392,14 +392,14 @@ end
 
 
 -- Setup
-Load'core.utils'.set_opts_local {
+Load 'core.utils'.set_opts_local {
   conceallevel = 2,
   textwidth = 80,
   undolevels = 10000,
   keymap = 'russian-markdown',
 }
 
-Load'core.utils'.set_maps {
+Load 'core.utils'.set_maps {
 
   ['!'] = {
     { '<C-_>', '<C-^>' },
@@ -412,24 +412,24 @@ Load'core.utils'.set_maps {
 
     -- auto new undoable edit
     { '<Space>', '<C-g>u<Space>' },
-    { '<C-m>',   '<C-g>u<C-m>' },
-    { '<C-w>',   '<C-g>u<C-w>' },
-    { '<C-u>',   '<C-g>u<C-u>' },
+    { '<C-m>', '<C-g>u<C-m>' },
+    { '<C-w>', '<C-g>u<C-w>' },
+    { '<C-u>', '<C-g>u<C-u>' },
   },
-  [{'n', 'x'}] = {
+  [{ 'n', 'x' }] = {
 
-    { '+',             inc_heading },
-    { '-',             dec_heading },
-    { '<CR>',          toggle_checkbox },
-    { 'cv',            rename },
-    { '<Leader>l',     create_link },
+    { '+', inc_heading },
+    { '-', dec_heading },
+    { '<CR>', toggle_checkbox },
+    { 'cv', rename },
+    { '<Leader>l', create_link },
     { '<Leader><C-_>', toggle_layout },
-    { '<Leader>o',     run_preview },
-    { '<Leader>q',     close_preview },
+    { '<Leader>o', run_preview },
+    { '<Leader>q', close_preview },
   },
 }
 
-Load'core.utils'.create_autocmds {
+Load 'core.utils'.create_autocmds {
   -- scrolloff for insert-mode
   CursorMovedI = {
     group = 'ftplugin.markdown',
@@ -448,6 +448,6 @@ Load'core.utils'.create_autocmds {
   },
 }
 
-Load'core.utils'.set_hls {
+Load 'core.utils'.set_hls {
   DiagnosticVirtualTextHint = { link = 'Comment' }
 }

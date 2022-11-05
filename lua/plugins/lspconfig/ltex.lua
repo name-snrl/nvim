@@ -1,9 +1,9 @@
-Load'lspconfig'.ltex.setup {
+Load 'lspconfig'.ltex.setup {
   handlers = {
     ["textDocument/publishDiagnostics"] = vim.lsp.with(
       vim.lsp.diagnostic.on_publish_diagnostics, {
-        underline = false,
-      }
+      underline = false,
+    }
     )
   },
   settings = {

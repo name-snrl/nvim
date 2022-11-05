@@ -54,10 +54,10 @@ local indents = {
 }
 
 for ft, opts in pairs(indents) do
-  Load'core.utils'.create_autocmds {
+  Load 'core.utils'.create_autocmds {
     FileType = {
       pattern = ft,
-      callback = function() Load'core.utils'.set_opts(opts) end,
+      callback = function() Load 'core.utils'.set_opts(opts) end,
       group = 'core.indents'
     }
   }

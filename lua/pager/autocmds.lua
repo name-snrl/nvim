@@ -1,6 +1,6 @@
-Load'core.utils'.create_autocmds({
+Load 'core.utils'.create_autocmds({
   BufModifiedSet = {
     command = 'norm M',
   },
 },
-{ group = 'NvimPager' })
+  { group = 'NvimPager' })

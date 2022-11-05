@@ -1,4 +1,4 @@
-Load'nvim-treesitter.configs'.setup {
+Load 'nvim-treesitter.configs'.setup {
   ensure_installed = {
     'bash',
     'lua',

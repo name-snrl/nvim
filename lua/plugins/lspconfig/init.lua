@@ -1,5 +1,5 @@
-Load'plugins.lspconfig.sumneko'
-Load'plugins.lspconfig.ltex'
+Load 'plugins.lspconfig.sumneko'
+Load 'plugins.lspconfig.ltex'
 local servers = {
   'bashls',
   'rnix',
@@ -7,10 +7,10 @@ local servers = {
 }
 
 for _, server in pairs(servers) do
-  Load'lspconfig'[server].setup {
+  Load 'lspconfig'[server].setup {
     on_attach = function(_, bufnr)
-      local mapping = Load'plugins.lspconfig.mapping'
-      Load'core.utils'.set_maps(mapping, 'n', { buffer = bufnr } )
+      local mapping = Load 'plugins.lspconfig.mapping'
+      Load 'core.utils'.set_maps(mapping, 'n', { buffer = bufnr })
     end,
   }
 end

@@ -1,5 +1,5 @@
-local tel_built = Load'telescope.builtin'
-local tel = Load'telescope'
+local tel_built = Load 'telescope.builtin'
+local tel = Load 'telescope'
 
 -- a b c d e f g h i j k l m n o p q r s t u v w x y z
 --
@@ -17,7 +17,7 @@ local tel = Load'telescope'
 --
 -- p.s. Leader is only used in n, x mode. <C-\> can be used in any mode
 
-Load'core.utils'.set_maps {
+Load 'core.utils'.set_maps {
   [{ 'n', 'x' }] = {
 
     { '<Leader>z', tel.extensions.zoxide.list },
@@ -49,7 +49,7 @@ Load'core.utils'.set_maps {
   },
 
   [{ 'n', 'x', 'o' }] = {
-    { 'gs', function() Load 'leap'.leap { target_windows =  {vim.api.nvim_get_current_win()} } end },
+    { 'gs', function() Load 'leap'.leap { target_windows = { vim.api.nvim_get_current_win() } } end },
   },
 
   [{ 'n', 'x', 'i', 't' }] = {

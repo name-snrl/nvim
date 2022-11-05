@@ -1,11 +1,11 @@
-Load'lspconfig'.sumneko_lua.setup {
+Load 'lspconfig'.sumneko_lua.setup {
   settings = {
     Lua = {
       runtime = {
         version = 'LuaJIT',
       },
       diagnostics = {
-        globals = {'vim', 'nvimpager', 'mp'},
+        globals = { 'vim', 'nvimpager', 'mp' },
       },
       workspace = {
         library = {
@@ -19,7 +19,7 @@ Load'lspconfig'.sumneko_lua.setup {
     }
   },
   on_attach = function(_, bufnr)
-    local mapping = Load'plugins.lspconfig.mapping'
-    Load'core.utils'.set_maps(mapping, 'n', { buffer = bufnr } )
+    local mapping = Load 'plugins.lspconfig.mapping'
+    Load 'core.utils'.set_maps(mapping, 'n', { buffer = bufnr })
   end
 }

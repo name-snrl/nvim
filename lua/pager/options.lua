@@ -1,4 +1,4 @@
-Load'core.utils'.set_opts {
+Load 'core.utils'.set_opts {
   timeout = false,
   clipboard = '+=unnamedplus',
   wrap = false,

@@ -1,4 +1,4 @@
-_G.Load = function (path)
+_G.Load = function(path)
   local ok, mod = pcall(require, path)
   if not ok then
     print('Error loading module ' .. path)
@@ -8,10 +8,7 @@ _G.Load = function (path)
   end
 end
 
-vim.opt.runtimepath:prepend(
-  ( vim.env.XDG_CONFIG_HOME or '~/.config' ) ..
-  '/nvim'
-)
+vim.opt.runtimepath:prepend((vim.env.XDG_CONFIG_HOME or '~/.config') .. '/nvim')
 
 Load 'impatient'
 Load 'core.options'

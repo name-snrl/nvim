@@ -1,4 +1,4 @@
-Load'nvim-tree'.setup {
+Load 'nvim-tree'.setup {
   update_cwd = true,
   actions = {
     open_file = {

@@ -1,6 +1,6 @@
 local M = {}
 
-M.set_opts = function (options)
+M.set_opts = function(options)
   for k, v in pairs(options) do
     if tostring(v):match('^+=') then
       -- append
@@ -20,7 +20,7 @@ M.set_opts = function (options)
   end
 end
 
-M.set_opts_local = function (options)
+M.set_opts_local = function(options)
   for k, v in pairs(options) do
     if tostring(v):match('^+=') then
       -- append
@@ -40,7 +40,7 @@ M.set_opts_local = function (options)
   end
 end
 
-M.set_maps = function (mapping, arg1, arg2)
+M.set_maps = function(mapping, arg1, arg2)
 
   -- Valid mapping formats:
   --
@@ -60,7 +60,7 @@ M.set_maps = function (mapping, arg1, arg2)
   local modes
   local options
 
-  if arg1 and ( arg1[1] or type(arg1) == 'string' ) then
+  if arg1 and (arg1[1] or type(arg1) == 'string') then
     modes = arg1
     options = arg2
   else
@@ -85,7 +85,7 @@ M.set_maps = function (mapping, arg1, arg2)
         vim.keymap.set(mode, lhs, rhs, opts)
       end
     else
-      local mode = modes or {'n', 'x'}
+      local mode = modes or { 'n', 'x' }
       local lhs = key
       local rhs = value
 
@@ -94,13 +94,13 @@ M.set_maps = function (mapping, arg1, arg2)
   end
 end
 
-M.set_hls = function (hls)
+M.set_hls = function(hls)
   for name, val in pairs(hls) do
     vim.api.nvim_set_hl(0, name, val)
   end
 end
 
-M.create_autocmds = function (cmds, opts)
+M.create_autocmds = function(cmds, opts)
   for events, lopts in pairs(cmds) do
     if opts then
       lopts = vim.tbl_deep_extend('keep', lopts, opts)

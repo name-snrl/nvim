@@ -1,4 +1,4 @@
-_G.Load = function (path)
+_G.Load = function(path)
   local ok, mod = pcall(require, path)
   if not ok then
     print('Error loading module ' .. path)
@@ -8,10 +8,7 @@ _G.Load = function (path)
   end
 end
 
-vim.opt.runtimepath:prepend(
-  ( vim.env.XDG_CONFIG_HOME or '~/.config' ) ..
-  '/nvim'
-)
+vim.opt.runtimepath:prepend((vim.env.XDG_CONFIG_HOME or '~/.config') .. '/nvim')
 
 do -- use colors from difftool
   local cmd = 'echo "$( < /proc/' .. vim.env.PARENT .. '/cmdline)"'
@@ -20,9 +17,9 @@ do -- use colors from difftool
   end
 end
 
-Load'pager.options'
-Load'pager.mapping'
-Load'pager.plugins'
-Load'pager.autocmds'
-Load'core.abbreviations'
-Load'core.g_variables'
+Load 'pager.options'
+Load 'pager.mapping'
+Load 'pager.plugins'
+Load 'pager.autocmds'
+Load 'core.abbreviations'
+Load 'core.g_variables'

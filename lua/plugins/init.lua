@@ -16,8 +16,8 @@ if fn.empty(fn.glob(install_path)) > 0 then
   vim.cmd 'packadd packer.nvim'
 end
 
-local packer = Load'packer'
-Load'plugins.packer' -- Packer config
+local packer = Load 'packer'
+Load 'plugins.packer' -- Packer config
 
 -- Plugins
 return packer.startup(function(use)
@@ -33,7 +33,7 @@ return packer.startup(function(use)
   -- Terminals
   use {
     'numToStr/FTerm.nvim', --simple float term
-    config = function() Load'plugins.FTerm' end,
+    config = function() Load 'plugins.FTerm' end,
   }
   --use 'akinsho/toggleterm.nvim' --more complex terminal
 
@@ -41,7 +41,7 @@ return packer.startup(function(use)
   -- LSP
   use {
     'neovim/nvim-lspconfig',
-    config = function() Load'plugins.lspconfig' end,
+    config = function() Load 'plugins.lspconfig' end,
   }
   --use {
   --  'jose-elias-alvarez/null-ls.nvim',
@@ -72,14 +72,14 @@ return packer.startup(function(use)
   --use "rafamadriz/friendly-snippets"  -- a bunch of snippets to use
   use {
     'windwp/nvim-autopairs',
-    config = function() Load'plugins.autopairs' end,
+    config = function() Load 'plugins.autopairs' end,
   }
 
 
   -- Treesitter
   use {
     'nvim-treesitter/nvim-treesitter', run = ':TSUpdate',
-    config = function() Load'plugins.treesitter' end,
+    config = function() Load 'plugins.treesitter' end,
     requires = {
       'p00f/nvim-ts-rainbow',
       'nvim-treesitter/playground',
@@ -107,11 +107,11 @@ return packer.startup(function(use)
   --use 'mbbill/undotree'         -- undotree navigation
   use {
     'andymass/vim-matchup', -- TODO set up
-    config = function() Load'plugins.matchup' end,
+    config = function() Load 'plugins.matchup' end,
   }
   use {
     'ggandor/leap.nvim',
-    config = function() Load'plugins.leap' end,
+    config = function() Load 'plugins.leap' end,
   }
   use {
     'nvim-telescope/telescope.nvim',
@@ -119,26 +119,26 @@ return packer.startup(function(use)
       { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
       'jvgrootveld/telescope-zoxide',
     },
-    config = function() Load'plugins.telescope' end,
+    config = function() Load 'plugins.telescope' end,
   }
   use {
     'kyazdani42/nvim-tree.lua',
-    config = function() Load'plugins.nvim-tree' end,
+    config = function() Load 'plugins.nvim-tree' end,
   }
 
 
   -- Appearance
   use {
     'b0o/incline.nvim',
-    config = function() Load'plugins.incline' end,
+    config = function() Load 'plugins.incline' end,
   }
   use {
     'RRethy/nvim-base16',
-    config = function() Load'plugins.base16' end,
+    config = function() Load 'plugins.base16' end,
   }
   use {
     'lukas-reineke/indent-blankline.nvim',
-    config = function() Load'plugins.indent-blankline' end,
+    config = function() Load 'plugins.indent-blankline' end,
   }
 
 
@@ -146,11 +146,11 @@ return packer.startup(function(use)
   use 'norcalli/nvim-colorizer.lua'
   use {
     'elkowar/yuck.vim',
-    config = function() Load'plugins.yuck' end,
+    config = function() Load 'plugins.yuck' end,
   }
   use {
     'ojroques/nvim-osc52',
-    config = function() Load'plugins.ssh_clipboard' end,
+    config = function() Load 'plugins.ssh_clipboard' end,
   }
   --use 'tpope/vim-obsession'                   -- auto :mksession
   --use 'antoinemadec/FixCursorHold.nvim'       -- not sure I need this

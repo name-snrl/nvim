@@ -6,13 +6,5 @@ Load 'leap'.setup {
     'a', ';',
     'v', 'n',
     'g', 'h'
-  },
-  special_keys = {
-    eol           = '<space>',
-    repeat_search = '<enter>',
-    next_match    = ';',
-    prev_match    = ',',
-    next_group    = '<space>',
-    prev_group    = '<tab>',
   }
 }

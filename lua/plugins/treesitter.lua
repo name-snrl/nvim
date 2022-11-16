@@ -1,6 +1,7 @@
 Load 'nvim-treesitter.configs'.setup {
   ensure_installed = {
     'bash',
+    'fish',
     'lua',
     'python',
     'nix',

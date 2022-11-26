@@ -62,7 +62,7 @@ Load 'incline'.setup {
 
     -- hide if the 1st line in buffer is too long and we see it
     local function is_in_win()
-      return vim.api.nvim_win_get_cursor(0)[1] == vim.fn.winline()
+      return vim.fn.line('w0') == 1
     end
 
     local function is_too_long()

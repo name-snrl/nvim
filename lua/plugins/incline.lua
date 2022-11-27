@@ -61,10 +61,6 @@ Load 'incline'.setup {
     end
 
     -- hide if the 1st line in buffer is too long and we see it
-    local function is_in_win()
-      return vim.fn.line('w0') == 1
-    end
-
     local function is_too_long()
       local first_line = vim.api.nvim_buf_get_lines(buf, 0, 1, false)[1]
       local incline_opts = 5 -- margin + padding + 2 column for a good look
@@ -89,9 +85,10 @@ Load 'incline'.setup {
       return vim.api.nvim_win_get_width(win) < length
     end
 
-    if is_in_win() and is_too_long() then
+    if vim.fn.line('w0') == 1 and is_too_long() then
       return
     end
+
     return res
   end,
 }

@@ -241,6 +241,8 @@ Load 'core.utils'.set_maps {
     { 'cv', rename },
     { '<Leader>l', create_link },
     { '<Leader><C-_>', toggle_layout },
+    { '<Leader>o', function() vim.cmd 'MarkdownPreview' end },
+    { '<Leader>q', function() vim.cmd 'MarkdownPreviewStop' end },
   },
 }
 
@@ -265,4 +267,11 @@ Load 'core.utils'.create_autocmds {
 
 Load 'core.utils'.set_hls {
   DiagnosticVirtualTextHint = { link = 'Comment' }
+}
+
+Load 'core.utils'.set_g {
+  -- markdown-preview.nvim
+  mkdp_browser = 'firefox-md-preview',
+  mkdp_page_title = '${name}',
+  mkdp_filetypes = { 'markdown' },
 }

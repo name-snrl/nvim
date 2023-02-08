@@ -26,7 +26,7 @@ it may break the indentations.
 ]]
 local indents = {
   -- Spaces
-  [{ 'sh', 'rust', 'python' }] = {
+  [{ 'sh', 'fish', 'rust', 'python' }] = {
     tabstop = 8,
     softtabstop = 0,
     shiftwidth = 4,

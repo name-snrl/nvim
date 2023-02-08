@@ -89,8 +89,10 @@ return packer.startup(function(use)
 
   -- Text processing
   use 'Vonr/align.nvim' -- TODO set up
-  use 'tpope/vim-surround' -- TODO se tup
-  --use 'numToStr/Surround.nvim'
+  use {
+    'kylechui/nvim-surround',
+    config = function() Load 'nvim-surround'.setup() end,
+  }
   --use {
   --  'numToStr/Comment.nvim', -- TODO
   --  config = function()

@@ -83,6 +83,8 @@ Load 'core.utils'.set_maps {
 
     { '<Space>', '<Leader>', rec_opts },
 
+    { 'gf', '<Cmd>e <cfile><CR>' }, -- open even if file doesn't exist
+
     -- Do not overwrite the register when using the change operator
     { 's', '"_s' },
     { 'c', '"_c' },

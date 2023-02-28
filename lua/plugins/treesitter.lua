@@ -9,6 +9,7 @@ Load 'nvim-treesitter.configs'.setup {
     'go',
     'c',
     'rust',
+    'scala',
 
     'css',
     'yaml',

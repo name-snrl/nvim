@@ -44,7 +44,7 @@ M.set_maps = function(mapping, arg1, arg2)
 
   -- Valid mapping formats:
   --
-  --local mapping = {
+  --set_maps {
   --  [{ 'n', 'x', 'i', 't' }] = {
   --    { lhs, rhs, opts },
   --  },
@@ -52,10 +52,10 @@ M.set_maps = function(mapping, arg1, arg2)
   --
   -- OR
   --
-  --local mapping = {
+  --set_maps(){
   --  ['<C-a>'] = rhs,
   --  qw = rhs,
-  --}
+  --}, { buffer = 0 }, 'n')
 
   local modes
   local options

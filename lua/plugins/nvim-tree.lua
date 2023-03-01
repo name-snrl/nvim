@@ -1,9 +1,1 @@
-Load 'nvim-tree'.setup {
-  update_cwd = true,
-  actions = {
-    open_file = {
-      quit_on_open = true,
-      --resize_window = true,
-    },
-  },
-}
+Load 'nvim-tree'.setup { sync_root_with_cwd = true }

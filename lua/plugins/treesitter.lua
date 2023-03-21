@@ -10,6 +10,7 @@ Load 'nvim-treesitter.configs'.setup {
     'c',
     'rust',
     'scala',
+    'starlark',
 
     'css',
     'yaml',

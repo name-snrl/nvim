@@ -1,9 +1,11 @@
 Load 'plugins.lspconfig.sumneko'
+Load 'plugins.lspconfig.metals'
 Load 'plugins.lspconfig.ltex'
+
 local servers = {
   'bashls',
   'rnix',
-  'pylsp'
+  'pylsp',
 }
 
 for _, server in pairs(servers) do

@@ -26,13 +26,13 @@ it may break the indentations.
 ]]
 local indents = {
   -- Spaces
-  [{ 'sh', 'fish', 'rust', 'python' }] = {
+  [{ 'sh', 'fish', 'rust', 'python', 'bzl' }] = {
     tabstop = 8,
     softtabstop = 0,
     shiftwidth = 4,
     expandtab = true,
   },
-  [{ 'nix', 'lua', 'vim', 'css', 'json', 'yaml', 'markdown' }] = {
+  [{ 'nix', 'lua', 'scala', 'vim', 'css', 'json', 'yaml', 'markdown' }] = {
     tabstop = 8,
     softtabstop = 0,
     shiftwidth = 2,

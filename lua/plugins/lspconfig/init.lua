@@ -1,10 +1,10 @@
 Load 'plugins.lspconfig.sumneko'
 Load 'plugins.lspconfig.metals'
 Load 'plugins.lspconfig.ltex'
+Load 'plugins.lspconfig.nil'
 
 local servers = {
   'bashls',
-  'rnix',
   'pylsp',
 }
 

@@ -20,11 +20,15 @@ Load 'nightfox'.setup {
   },
   groups = {
     all = {
-      IndentBlanklineIndent1 = { bg = "bg1" },
-      IndentBlanklineIndent2 = { bg = "bg2" },
-      CursorLine             = { bg = "bg2" },
-      Comment                = { fg = 'bg4' },
-      EndOfBuffer            = { link = "NonText" }, -- show end of buffer
+      IndentBlanklineIndent1  = { bg = 'bg1' },
+      IndentBlanklineIndent2  = { bg = 'bg2' },
+      CursorLine              = { bg = 'bg2' },
+      Comment                 = { fg = 'bg4' },
+      EndOfBuffer             = { link = 'NonText' }, -- show end of buffer
+      -- Telescope
+      TelescopeNormal         = { bg = 'bg0' },
+      TelescopeSelection      = { fg = 'palette.red', style = 'bold' },
+      TelescopeSelectionCaret = { fg = 'palette.red', style = 'bold' },
     }
   }
 }

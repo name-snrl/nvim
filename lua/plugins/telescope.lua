@@ -35,7 +35,6 @@ t.setup {
       '--smart-case',
 
       '--follow',
-      '--hidden',
     },
   },
   extensions = {

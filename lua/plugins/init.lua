@@ -135,8 +135,8 @@ return packer.startup(function(use)
     config = function() Load 'plugins.incline' end,
   }
   use {
-    'RRethy/nvim-base16',
-    config = function() Load 'plugins.base16' end,
+    'EdenEast/nightfox.nvim',
+    config = function() Load 'plugins.nightfox-colorscheme' end,
   }
   use {
     'lukas-reineke/indent-blankline.nvim',

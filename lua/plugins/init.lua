@@ -102,9 +102,6 @@ return packer.startup(function(use)
   -- Navigation
   --use 'ThePrimeagen/harpoon' -- if alternate or marks are not enough
   use 'moll/vim-bbye'
-  -- TODO set up and start to use plugins above
-  --use 'simnalamburt/vim-mundo'  -- undotree navigation, try this first
-  --use 'mbbill/undotree'         -- undotree navigation
   use {
     'andymass/vim-matchup', -- TODO set up
     config = function() Load 'plugins.matchup' end,
@@ -118,6 +115,7 @@ return packer.startup(function(use)
     requires = {
       { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
       'jvgrootveld/telescope-zoxide',
+      'debugloop/telescope-undo.nvim',
     },
     config = function() Load 'plugins.telescope' end,
   }

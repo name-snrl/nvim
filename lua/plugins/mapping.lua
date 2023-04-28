@@ -6,7 +6,7 @@ local tel = Load 'telescope'
 -- Keys used in combination with:
 --
 --      GLOBAL
--- Leader    -- b c e f g j m q z /
+-- Leader    -- b c e f g j m q u z /
 -- <C-\>     -- c f o t
 -- gb
 -- gc
@@ -14,7 +14,7 @@ local tel = Load 'telescope'
 -- gs
 --
 --      LOCAL
--- Leader    -- b c f g j m q z /
+-- Leader    -- b c f g j m q u z /
 -- <C-\>     -- c f t
 -- gs
 --
@@ -29,6 +29,7 @@ Load 'core.utils'.set_maps {
   [{ 'n', 'x' }] = {
 
     { '<Leader>z', tel.extensions.zoxide.list },
+    { '<Leader>u', tel.extensions.undo.undo },
     { '<Leader>q', tel_built.diagnostics },
     { '<Leader>m', tel_built.marks },
     { '<Leader>b', tel_built.buffers },

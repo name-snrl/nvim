@@ -31,7 +31,7 @@ local rec_opts = { remap = true } -- :h recursive_mapping
 -- Keys used in combination with:
 --
 --      GLOBAL
--- Leader    -- b c e f g j q z /
+-- Leader    -- b c e f g j q u z /
 -- <C-\>     -- c f o t
 -- gb
 -- gc

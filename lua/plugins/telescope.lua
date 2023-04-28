@@ -20,7 +20,6 @@ t.setup {
         ['<C-x>'] = act.delete_buffer,
         ['<C-s>'] = act.select_horizontal,
       },
-
       n = {
         ['<C-x>'] = act.delete_buffer,
         ['<C-s>'] = act.select_horizontal,
@@ -45,11 +44,28 @@ t.setup {
       override_generic_sorter = true,
       override_file_sorter = true,
       case_mode = 'smart_case',
+    },
+    undo = {
+      diff_context_lines = 5,
+      layout_config = {
+        height = 25,
+        preview_cutoff = 80,
+        preview_width = 0.7,
+      },
+      mappings = {
+        i = {
+          ['<CR>'] = Load 'telescope-undo.actions'.restore,
+          ['<C-c>'] = Load 'telescope-undo.actions'.yank_additions,
+          ['<C-x>'] = Load 'telescope-undo.actions'.yank_deletions,
+        },
+      }
     }
   }
 }
 
-t.load_extension('fzf', 'zoxide')
+t.load_extension('fzf')
+t.load_extension('zoxide')
+t.load_extension('undo')
 Load 'telescope._extensions.zoxide.config'.setup {
   mappings = {
     default = {
@@ -64,6 +80,4 @@ Load 'telescope._extensions.zoxide.config'.setup {
   }
 }
 
--- TODO
--- 1. Create builtin undotree. e.g. simnalamburt/vim-mundo mbbill/undotree
--- 2. The ability to see unlisted help and man buffers in builin.buffers.
+-- TODO: The ability to see unlisted help and man buffers in builin.buffers.

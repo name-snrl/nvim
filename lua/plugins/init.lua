@@ -151,7 +151,6 @@ return packer.startup(function(use)
     config = function() Load 'plugins.ssh_clipboard' end,
   }
   --use 'tpope/vim-obsession'                   -- auto :mksession
-  --use 'antoinemadec/FixCursorHold.nvim'       -- not sure I need this
 
 
   -- Automatically set up your configuration after cloning packer.nvim

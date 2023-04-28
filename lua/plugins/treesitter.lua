@@ -52,7 +52,7 @@ Load 'nvim-treesitter.configs'.setup {
 
   rainbow = {
     enable = true,
-    extended_mode = true,
-    max_file_lines = nil,
-  },
+    query = 'rainbow-parens',
+    strategy = Load 'ts-rainbow'.strategy.global,
+  }
 }

@@ -81,7 +81,7 @@ return packer.startup(function(use)
     'nvim-treesitter/nvim-treesitter', run = ':TSUpdate',
     config = function() Load 'plugins.treesitter' end,
     requires = {
-      'p00f/nvim-ts-rainbow',
+      'HiPhish/nvim-ts-rainbow2',
       'nvim-treesitter/playground',
     },
   }

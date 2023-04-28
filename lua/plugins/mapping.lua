@@ -8,12 +8,20 @@ local tel = Load 'telescope'
 --      GLOBAL
 -- Leader    -- b c e f g j m q z /
 -- <C-\>     -- c f o t
+-- gb
+-- gc
+-- gl
 -- gs
 --
 --      LOCAL
 -- Leader    -- b c f g j m q z /
 -- <C-\>     -- c f t
 -- gs
+--
+--    Comment.nvim
+-- gb
+-- gc
+-- gl
 --
 -- p.s. Leader is only used in n, x mode. <C-\> can be used in any mode
 

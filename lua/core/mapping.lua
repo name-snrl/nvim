@@ -33,11 +33,19 @@ local rec_opts = { remap = true } -- :h recursive_mapping
 --      GLOBAL
 -- Leader    -- b c e f g j q z /
 -- <C-\>     -- c f o t
+-- gb
+-- gc
+-- gl
 -- gs
 --
 --      LOCAL
 -- Leader    -- e
 -- <C-\>     --
+--
+--    Comment.nvim
+-- gb
+-- gc
+-- gl
 --
 -- p.s. Leader is only used in n, x mode. <C-\> can be used in any mode
 

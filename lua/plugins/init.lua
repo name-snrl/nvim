@@ -93,12 +93,10 @@ return packer.startup(function(use)
     'kylechui/nvim-surround',
     config = function() Load 'nvim-surround'.setup() end,
   }
-  --use {
-  --  'numToStr/Comment.nvim', -- TODO
-  --  config = function()
-  --    require('Comment').setup()
-  --  end
-  --}
+  use {
+    'numToStr/Comment.nvim',
+    config = function() Load 'plugins.comment' end
+  }
 
 
   -- Navigation

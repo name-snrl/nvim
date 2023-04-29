@@ -97,6 +97,9 @@ return packer.startup(function(use)
     'numToStr/Comment.nvim',
     config = function() Load 'plugins.comment' end
   }
+  -- Cool plugin to replace text on project (rg+sed).
+  -- You might need it someday.
+  --use 'nvim-pack/nvim-spectre'
 
 
   -- Navigation

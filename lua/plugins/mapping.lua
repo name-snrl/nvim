@@ -1,22 +1,32 @@
 local tel_built = Load 'telescope.builtin'
 local tel = Load 'telescope'
+local hr_ui = Load 'harpoon.ui'
+local toggle_or_jump = function()
+  if vim.v.count == 0 then
+    hr_ui.toggle_quick_menu()
+  else
+    hr_ui.nav_file(vim.v.count)
+  end
+end
 
 -- a b c d e f g h i j k l m n o p q r s t u v w x y z
 --
 -- Keys used in combination with:
 --
 --      GLOBAL
--- Leader    -- b c e f g j m q u z /
+-- Leader    -- b c e f g j n q u w z
 -- <C-\>     -- c f o t
 -- gb
 -- gc
 -- gl
 -- gs
+-- mn
 --
 --      LOCAL
--- Leader    -- b c f g j m q u z /
+-- Leader    -- b c f g j q u w z
 -- <C-\>     -- c f t
 -- gs
+-- mn
 --
 --    Comment.nvim
 -- gb
@@ -27,13 +37,16 @@ local tel = Load 'telescope'
 
 Load 'core.utils'.set_maps {
   [{ 'n', 'x' }] = {
+    { 'mn',        Load 'harpoon.mark'.add_file },
+    { '<C-n>',     hr_ui.nav_next },
+    { '<C-p>',     hr_ui.nav_prev },
+    { '<Leader>w', toggle_or_jump },
+
 
     { '<Leader>z', tel.extensions.zoxide.list },
     { '<Leader>u', tel.extensions.undo.undo },
     { '<Leader>q', tel_built.diagnostics },
-    { '<Leader>m', tel_built.marks },
     { '<Leader>b', tel_built.buffers },
-    { '<Leader>/', tel_built.current_buffer_fuzzy_find },
     { '<Leader>g', tel_built.live_grep },
     { '<Leader>j', function() tel_built.jumplist({ fname_width = 999 }) end },
     { '<Leader>f', function() tel_built.find_files({ follow = true }) end },

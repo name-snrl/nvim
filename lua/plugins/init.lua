@@ -100,7 +100,10 @@ return packer.startup(function(use)
 
 
   -- Navigation
-  --use 'ThePrimeagen/harpoon' -- if alternate or marks are not enough
+  use {
+    'ThePrimeagen/harpoon',
+    config = function() Load 'plugins.harpoon' end,
+  }
   use 'moll/vim-bbye'
   use {
     'andymass/vim-matchup', -- TODO set up

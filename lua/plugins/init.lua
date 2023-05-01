@@ -47,6 +47,10 @@ return packer.startup(function(use)
   --  'jose-elias-alvarez/null-ls.nvim',
   --  config = function() Load'plugins.null-ls' end,
   --}
+  use {
+    'j-hui/fidget.nvim',
+    config = function() Load 'fidget'.setup {} end,
+  }
   --use 'RishabhRD/nvim-lsputils'
   --use 'folke/lua-dev.nvim'
   --use 'folke/trouble.nvim'

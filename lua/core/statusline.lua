@@ -1,8 +1,0 @@
--- TODO
---vim.opt.statusline = 'ﱮ %{fnamemodify(getcwd(), ":~")}' ..
---'    %= 13' .. --#vim.diagnostic.get(0, { severity = vim.diagnostic.severity.ERROR  })
---'  9' .. --#vim.diagnostic.get(0, { severity = vim.diagnostic.severity.WARN  })
---'  3' .. --#vim.diagnostic.get(0, { severity = vim.diagnostic.severity.INFO  })
---'  10' .. --#vim.diagnostic.get(0, { severity = vim.diagnostic.severity.HINT  })
---'     %-20.20{expandcmd("branch")}' ..
---'    LSP   %4.4(%k%) %-14.14(%l,%c%V%) %P'

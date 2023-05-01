@@ -9,7 +9,8 @@ Load 'core.utils'.set_opts {
   -- appearance
   cursorline = true,
   signcolumn = 'yes',
-  laststatus = 3,
+  laststatus = 0,
+  rulerformat = '%23(%k %-13(%l,%c%V%)%=%P%)',
   list = true,
   listchars = 'tab:▸ ',
   linebreak = true,

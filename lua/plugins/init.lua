@@ -47,6 +47,7 @@ return packer.startup(function(use)
   --  'jose-elias-alvarez/null-ls.nvim',
   --  config = function() Load'plugins.null-ls' end,
   --}
+  use 'scalameta/nvim-metals'
   use {
     'j-hui/fidget.nvim',
     config = function() Load 'fidget'.setup {} end,

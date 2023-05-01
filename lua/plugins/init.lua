@@ -52,10 +52,6 @@ return packer.startup(function(use)
     'j-hui/fidget.nvim',
     config = function() Load 'fidget'.setup {} end,
   }
-  --use 'RishabhRD/nvim-lsputils'
-  --use 'folke/lua-dev.nvim'
-  --use 'folke/trouble.nvim'
-  --use 'ray-x/lsp_signature.nvim'
 
 
   -- Complete
@@ -161,7 +157,6 @@ return packer.startup(function(use)
     'ojroques/nvim-osc52',
     config = function() Load 'plugins.ssh_clipboard' end,
   }
-  --use 'tpope/vim-obsession'                   -- auto :mksession
 
 
   -- Automatically set up your configuration after cloning packer.nvim

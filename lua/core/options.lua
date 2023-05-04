@@ -10,7 +10,7 @@ Load 'core.utils'.set_opts {
   cursorline = true,
   signcolumn = 'yes',
   laststatus = 0,
-  rulerformat = '%23(%k %-13(%l,%c%V%)%=%P%)',
+  rulerformat = '%40(%4{v:lua.get_keymap()} %-17{v:lua.get_branch()} %-13(%l,%c%V%) %P%)',
   list = true,
   listchars = 'tab:▸ ',
   linebreak = true,
@@ -46,7 +46,7 @@ Load 'core.utils'.set_opts {
   -- indents
   autoindent = true,
   --smartindent = true,
-  tabstop = 8, -- default value
+  tabstop = 8,     -- default value
   softtabstop = 0, -- default value
   shiftwidth = 2,
   expandtab = true,

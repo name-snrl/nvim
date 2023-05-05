@@ -130,13 +130,14 @@ return packer.startup(function(use)
     'kyazdani42/nvim-tree.lua',
     config = function() Load 'plugins.nvim-tree' end,
   }
+  use {
+    'SmiteshP/nvim-navic',
+    config = function() Load 'plugins.navic' end,
+  }
+  --use 'SmiteshP/nvim-navbuddy' TODO
 
 
   -- Appearance
-  use {
-    'b0o/incline.nvim',
-    config = function() Load 'plugins.incline' end,
-  }
   use {
     'EdenEast/nightfox.nvim',
     config = function() Load 'plugins.nightfox-colorscheme' end,

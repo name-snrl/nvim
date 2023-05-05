@@ -1,2 +1,0 @@
--- TODO
-vim.opt.tabline = ''

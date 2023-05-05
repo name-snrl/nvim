@@ -1,6 +1,7 @@
 Load 'core.utils'.set_opts {
   timeout = false,
   clipboard = '+=unnamedplus',
+  winbar = "%#Normal#%=%* %f ",
   wrap = false,
 
   -- cmdline-completion

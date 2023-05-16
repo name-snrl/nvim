@@ -106,7 +106,7 @@ return packer.startup(function(use)
   -- Navigation
   use {
     'ThePrimeagen/harpoon',
-    config = function() Load 'plugins.harpoon' end,
+    config = function() Load 'harpoon'.setup() end,
   }
   use 'moll/vim-bbye'
   use {

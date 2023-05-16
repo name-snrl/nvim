@@ -4,6 +4,9 @@ Load 'lspconfig'.nil_ls.setup {
       formatting = {
         command = { "nixpkgs-fmt" },
       },
+      nix = {
+        flake = { autoArchive = true },
+      },
     },
   },
   on_attach = function(_, bufnr)

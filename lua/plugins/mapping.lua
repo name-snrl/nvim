@@ -80,11 +80,9 @@ Load 'core.utils'.set_maps {
 
   [{ 'n', 't' }] = {
     { '<C-\\>t', Load("FTerm").toggle },
-    { '<C-\\>f', '<Cmd>NvimTreeToggle<CR>' },
   },
 
   [{ 'i', 'x' }] = {
     { '<C-\\>t', '<Esc><Cmd>lua Load("FTerm").toggle()<CR>' },
-    { '<C-\\>f', '<Esc><Cmd>NvimTreeToggle<CR>' },
   },
 }

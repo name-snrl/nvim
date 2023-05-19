@@ -127,10 +127,6 @@ return packer.startup(function(use)
     config = function() Load 'plugins.telescope' end,
   }
   use {
-    'kyazdani42/nvim-tree.lua',
-    config = function() Load 'plugins.nvim-tree' end,
-  }
-  use {
     'SmiteshP/nvim-navic',
     config = function() Load 'plugins.navic' end,
   }

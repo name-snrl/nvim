@@ -108,7 +108,7 @@ return packer.startup(function(use)
     'ThePrimeagen/harpoon',
     config = function() Load 'harpoon'.setup() end,
   }
-  use 'moll/vim-bbye'
+  use 'famiu/bufdelete.nvim'
   use {
     'andymass/vim-matchup', -- TODO set up
     config = function() Load 'plugins.matchup' end,

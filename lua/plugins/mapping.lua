@@ -54,18 +54,18 @@ Load 'core.utils'.set_maps {
     { '<Leader>c', '<Cmd>ColorizerReloadAllBuffers<CR>' },
 
     { '<Del>', function()
-      if vim.opt.ro:get() then
-        vim.api.nvim_command 'Bdelete'
+      if vim.bo.modified then
+        vim.cmd 'write | Bdelete'
       else
-        vim.api.nvim_command 'write | Bdelete'
+        vim.cmd 'Bdelete'
       end
-      vim.api.nvim_command 'quit'
+      vim.cmd 'quit'
     end },
     { '<BS>', function()
-      if vim.opt.ro:get() then
-        vim.api.nvim_command 'Bdelete'
+      if vim.bo.modified then
+        vim.cmd 'write | Bdelete'
       else
-        vim.api.nvim_command 'write | Bdelete'
+        vim.cmd 'Bdelete'
       end
     end },
   },

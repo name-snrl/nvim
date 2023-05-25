@@ -30,7 +30,7 @@ return packer.startup(function(use)
   use 'tpope/vim-repeat'
 
 
-  -- Terminals
+  -- Terminal
   use {
     'numToStr/FTerm.nvim', --simple float term
     config = function() Load 'plugins.FTerm' end,
@@ -149,6 +149,9 @@ return packer.startup(function(use)
     'elkowar/yuck.vim',
     config = function() Load 'plugins.yuck' end,
   }
+  -- related:
+  -- https://github.com/neovim/neovim/issues/3344
+  -- https://github.com/neovim/neovim/issues/20672
   use {
     'ojroques/nvim-osc52',
     config = function() Load 'plugins.ssh_clipboard' end,

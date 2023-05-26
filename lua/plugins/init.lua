@@ -88,7 +88,6 @@ return packer.startup(function(use)
 
 
   -- Text processing
-  use 'Vonr/align.nvim' -- TODO set up
   use {
     'kylechui/nvim-surround',
     config = function() Load 'nvim-surround'.setup() end,

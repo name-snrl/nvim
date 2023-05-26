@@ -1,6 +1,3 @@
--- motions: a b e f g h i j k l t w
--- free: d m n o p q r s u x y z
-
 local lsp = vim.lsp.buf
 local tel = Load 'telescope.builtin'
 return {

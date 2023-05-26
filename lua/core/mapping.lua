@@ -1,16 +1,12 @@
 --[[
-# Modes
+# Modes I use
 
-The modes I use:
 - normal mode  = 'n',
 - visual mode  = 'x',
 - insert mode  = 'i',
 - command mode = 'c',
 - ins+cmd mode = '!',
 - term mode    = 't',
-
-# All posible default {motion}'s that used with operators:
-- a b e f g h i j k l t w
 
 # Some tricks
 'stty -ixon' to disable flow control and unbind C-q and C-s in tty
@@ -21,34 +17,95 @@ Use <unique> to check the existing mapping. e.g.:
 
 Use '<Cmd>...<CR>' instead ':...<CR>'
   :h <Cmd>
+
+---------------------------------------------------
+
+# List of unused or unimportant sequences and their status
+
+A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+
+## Global:
+
+Alt free to use.
+
+<C-\> + c o t
+
+
+## Normal and Visual modes
+
+Combination of operators and motions.  I plan to use them mostly for lsp. Keys
+that are not {motion}'s:
+
+c d m n o p q r s u v x y z
+
+Thus, you can make any combination starting with an :operator and ending with
+any of the above buttons. Exceptions are mappings like `cc`.
+
+___
+
+     - +
+     - -
+     - _
+used - <F1> - <F12>
+used - <Down>
+used - <Left>
+used - <Right>
+used - <Up>
+     - <End>
+     - <Home>
+     - <PageUp>
+     - <PageDown>
+used - <Del>
+used - <BS>
+used - <Space>
+     - <Insert>
+     - C-h
+used - C-j
+used - C-k
+     - C-m
+used - C-n
+     - C-p
+used - C-q
+     - C-s
+used - C-_ == C-/ == C-&
+
+___
+
+You may also find something useless in sequences beginning with z/g. I'll just
+list what I use:
+
+gb
+gc
+gl
+gs
+gw
+mn
+
+___
+
+<Leader> + b c f g j q u z
+
+
+## Insert mode
+
+     - C-_ == C-/ == C-&
+     - C-b
+     - C-l
+     - C-h
+     - C-j
+used - C-q
+     - C-s
+
+Standard sequences that I find useless:
+
+     - C-e
+     - C-k
+     - C-n
+     - C-p
+     - C-y
 ]]
 local utils = Load 'core.map_utils'
-local rec_opts = { remap = true } -- :h recursive_mapping
-
--- a b c d e f g h i j k l m n o p q r s t u v w x y z
---
--- Keys used in combination with:
---
---      GLOBAL
--- Leader    -- b c e f g j n q u z
--- <C-\>     -- c f o t
--- gb
--- gc
--- gl
--- gs
--- gw
--- mn
---
---      LOCAL
--- Leader    -- e n
--- <C-\>     --
---
---    Comment.nvim
--- gb
--- gc
--- gl
---
--- p.s. Leader is only used in n, x mode. <C-\> can be used in any mode
+local rec_opts = { remap = true }
 
 Load 'core.utils'.set_maps {
   [{ 'n', 'x', 'i', 't' }] = {
@@ -57,38 +114,6 @@ Load 'core.utils'.set_maps {
   },
 
   [{ 'n', 'x' }] = {
-
-    -- Standard sequences* that are not used or duplicate other keys.
-    -- * only sequences that work in tty
-    --
-    -- GLOBAL   -- LOCAL
-    --          --      -- +
-    --          --      -- -
-    --          --      -- _
-    -- used     -- used -- <F1> - <F12>
-    -- used     -- used -- <Down>
-    -- used     -- used -- <Left>
-    -- used     -- used -- <Right>
-    -- used     -- used -- <Up>
-    --          --      -- <End>
-    --          --      -- <Home>
-    --          --      -- <PageUp>
-    --          --      -- <PageDown>
-    -- used     --      -- <Del>        -- plugins.mapping
-    -- used     --      -- <BS>         -- plugins.mapping
-    -- used     -- used -- <Space>
-    --          --      -- <Insert>
-    --                  -- C-h
-    -- used     -- used -- C-j
-    -- used     -- used -- C-k
-    --          --      -- C-m
-    -- used     -- used -- C-n        -- plugins.mapping
-    --          --      -- C-p
-    -- used     -- used -- C-q
-    --          --      -- C-s
-    -- used     -- used -- C-_ == C-/ == C-&
-    --
-    -- p.s. Alt free to use.
 
     { '<Space>',    '<Leader>',               rec_opts },
 
@@ -166,29 +191,7 @@ Load 'core.utils'.set_maps {
     { '>', '>gv' },
   },
 
-  ['i'] = {
-    -- Standard sequences that are not used or duplicate other keys.
-    --
-    -- GLOBAL   -- LOCAL
-    --          --      -- C-_ == C-/ == C-&
-    --          --      -- C-b
-    --          --      -- C-l
-    --          --      -- C-h
-    --          --      -- C-j
-    --   used   -- used -- C-q
-    --          --      -- C-s
-    --
-    -- Standard sequences that I find useless.
-    --
-    -- GLOBAL   -- LOCAL
-    --          --      -- C-e
-    --          --      -- C-k
-    --          --      -- C-n
-    --          --      -- C-p
-    --          --      -- C-y
-    --
-    -- p.s. Alt free to use.
-  },
+  ['i'] = {},
 
   ['t'] = {
     -- Scrolling

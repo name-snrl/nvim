@@ -9,34 +9,6 @@ local toggle_or_jump = function()
   end
 end
 
--- a b c d e f g h i j k l m n o p q r s t u v w x y z
---
--- Keys used in combination with:
---
---      GLOBAL
--- Leader    -- b c e f g j n q u z
--- <C-\>     -- c f o t
--- gb
--- gc
--- gl
--- gs
--- gw
--- mn
---
---      LOCAL
--- Leader    -- b c f g j q u z
--- <C-\>     -- c f t
--- gs
--- gw
--- mn
---
---    Comment.nvim
--- gb
--- gc
--- gl
---
--- p.s. Leader is only used in n, x mode. <C-\> can be used in any mode
-
 Load 'core.utils'.set_maps {
   [{ 'n', 'x' }] = {
     { 'mn',        Load 'harpoon.mark'.add_file },

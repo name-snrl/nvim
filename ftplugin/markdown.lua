@@ -47,10 +47,10 @@ local function toggle_checkbox()
   local line, row = cursor_line()
 
   if line:match('%[ %]') then
-    local new_line = line:gsub('%[ %]', '[X]')
+    local new_line = line:gsub('%[ %]', '[x]')
     vim.api.nvim_buf_set_lines(0, row - 1, row, false, { new_line })
-  elseif line:match('%[X%]') then
-    local new_line = line:gsub('%[X%]', '[ ]')
+  elseif line:match('%[x%]') then
+    local new_line = line:gsub('%[x%]', '[ ]')
     vim.api.nvim_buf_set_lines(0, row - 1, row, false, { new_line })
   end
 end
@@ -268,7 +268,6 @@ Load 'core.utils'.create_autocmds {
 Load 'core.utils'.set_hls {
   DiagnosticVirtualTextHint = { link = 'Comment' }
 }
-
 Load 'core.utils'.set_g {
   -- markdown-preview.nvim
   mkdp_browser = 'firefox-md-preview',

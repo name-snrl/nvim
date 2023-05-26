@@ -30,12 +30,13 @@ local rec_opts = { remap = true } -- :h recursive_mapping
 -- Keys used in combination with:
 --
 --      GLOBAL
--- Leader    -- b c e f g j n q u w z
+-- Leader    -- b c e f g j n q u z
 -- <C-\>     -- c f o t
 -- gb
 -- gc
 -- gl
 -- gs
+-- gw
 -- mn
 --
 --      LOCAL
@@ -81,8 +82,8 @@ Load 'core.utils'.set_maps {
     -- used     -- used -- C-j
     -- used     -- used -- C-k
     --          --      -- C-m
-    -- used     --      -- C-n        -- plugins.mapping
-    -- used     --      -- C-p        -- plugins.mapping
+    -- used     -- used -- C-n        -- plugins.mapping
+    --          --      -- C-p
     -- used     -- used -- C-q
     --          --      -- C-s
     -- used     -- used -- C-_ == C-/ == C-&
@@ -146,7 +147,7 @@ Load 'core.utils'.set_maps {
     { '[d',         vim.diagnostic.goto_prev },
     { ']d',         vim.diagnostic.goto_next },
 
-    { '<Leader>n',  '<Cmd>%s///gn<CR>' },     -- print the number of matches
+    { '<C-n>',      '<Cmd>%s///gn<CR>' }, -- print the number of matches
   },
 
   ['n'] = {

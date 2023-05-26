@@ -14,18 +14,20 @@ end
 -- Keys used in combination with:
 --
 --      GLOBAL
--- Leader    -- b c e f g j n q u w z
+-- Leader    -- b c e f g j n q u z
 -- <C-\>     -- c f o t
 -- gb
 -- gc
 -- gl
 -- gs
+-- gw
 -- mn
 --
 --      LOCAL
--- Leader    -- b c f g j q u w z
+-- Leader    -- b c f g j q u z
 -- <C-\>     -- c f t
 -- gs
+-- gw
 -- mn
 --
 --    Comment.nvim
@@ -38,10 +40,7 @@ end
 Load 'core.utils'.set_maps {
   [{ 'n', 'x' }] = {
     { 'mn',        Load 'harpoon.mark'.add_file },
-    { '<C-n>',     hr_ui.nav_next },
-    { '<C-p>',     hr_ui.nav_prev },
-    { '<Leader>w', toggle_or_jump },
-
+    { 'gw',        toggle_or_jump },
 
     { '<Leader>z', tel.extensions.zoxide.list },
     { '<Leader>u', tel.extensions.undo.undo },

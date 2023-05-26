@@ -10,7 +10,7 @@ return {
   gD = lsp.declaration,
   K  = lsp.hover,
   cv = lsp.rename,
-  gw = lsp.format,
+  gq = lsp.format,
   --['<C-k>']     = lsp.signature_help,
   --['<Leader>D']  = lsp.type_definition,
   --['<Leader>ca'] = lsp.code_action,

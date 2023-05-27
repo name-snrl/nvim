@@ -43,10 +43,10 @@ return packer.startup(function(use)
     'neovim/nvim-lspconfig',
     config = function() Load 'plugins.lspconfig' end,
   }
-  --use {
-  --  'jose-elias-alvarez/null-ls.nvim',
-  --  config = function() Load'plugins.null-ls' end,
-  --}
+  use {
+    'name-snrl/null-ls.nvim', -- TODO replace by upstream, when PR will be merged
+    config = function() Load 'plugins.null-ls' end,
+  }
   use 'scalameta/nvim-metals'
   use {
     'j-hui/fidget.nvim',
@@ -144,6 +144,15 @@ return packer.startup(function(use)
 
   -- Misc
   use 'norcalli/nvim-colorizer.lua'
+  use {
+    'toppair/peek.nvim', run = 'deno task --quiet build:fast',
+    commit = '13736cf0d9e9da4d53cef8abc4f4c34a7e22268e' -- TODO
+  }
+  -- TODO replace with https://github.com/microsoft/vscode-markdown-languageservice
+  use {
+    'name-snrl/mkdnflow.nvim',
+    config = function() Load 'plugins.mkdnflow' end,
+  }
   use {
     'elkowar/yuck.vim',
     config = function() Load 'plugins.yuck' end,

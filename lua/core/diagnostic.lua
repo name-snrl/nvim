@@ -7,12 +7,12 @@ Can be a bool or a number. A number is the deviation.
 e.g., if deviation = 2 (default), then lines 3, 4, 5 or
 3, 5, 7 will have the same indent, but 3, 6 will not.
 --]]
-if not vim.env.TERM:match('linux') then
+if not vim.env.TERM:match 'linux' then
   local signs = {
-    Error = "",
-    Warn  = "",
-    Info  = "",
-    Hint  = "",
+    Error = '',
+    Warn = '',
+    Info = '',
+    Hint = '',
   }
 
   for type, icon in pairs(signs) do
@@ -21,7 +21,7 @@ if not vim.env.TERM:match('linux') then
   end
 end
 
-vim.diagnostic.config({
+vim.diagnostic.config {
   underline = true,
   virtual_text = {
     prefix = '*',
@@ -37,7 +37,7 @@ vim.diagnostic.config({
       'CursorMoved',
       'CursorMovedI',
       'InsertCharPre',
-      'ModeChanged'
+      'ModeChanged',
     },
     focusable = true,
     --
@@ -46,4 +46,4 @@ vim.diagnostic.config({
   },
   update_in_insert = true,
   severity_sort = true,
-})
+}

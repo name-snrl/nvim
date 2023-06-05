@@ -9,40 +9,61 @@ local toggle_or_jump = function()
   end
 end
 
-Load 'core.utils'.set_maps {
+Load('core.utils').set_maps {
   [{ 'n', 'x' }] = {
-    { 'mn',        Load 'harpoon.mark'.add_file },
-    { 'gw',        toggle_or_jump },
+    { 'mn', Load('harpoon.mark').add_file },
+    { 'gw', toggle_or_jump },
 
     { '<Leader>z', tel.extensions.zoxide.list },
     { '<Leader>u', tel.extensions.undo.undo },
     { '<Leader>q', tel_built.diagnostics },
     { '<Leader>b', tel_built.buffers },
     { '<Leader>g', tel_built.live_grep },
-    { '<Leader>j', function() tel_built.jumplist({ fname_width = 999 }) end },
-    { '<Leader>f', function() tel_built.find_files({ follow = true }) end },
+    {
+      '<Leader>j',
+      function()
+        tel_built.jumplist { fname_width = 999 }
+      end,
+    },
+    {
+      '<Leader>f',
+      function()
+        tel_built.find_files { follow = true }
+      end,
+    },
 
     { '<Leader>c', '<Cmd>ColorizerReloadAllBuffers<CR>' },
 
-    { '<Del>', function()
-      if vim.bo.modified then
-        vim.cmd 'write | Bdelete'
-      else
-        vim.cmd 'Bdelete'
-      end
-      vim.cmd 'quit'
-    end },
-    { '<BS>', function()
-      if vim.bo.modified then
-        vim.cmd 'write | Bdelete'
-      else
-        vim.cmd 'Bdelete'
-      end
-    end },
+    {
+      '<Del>',
+      function()
+        if vim.bo.modified then
+          vim.cmd 'write | Bdelete'
+        else
+          vim.cmd 'Bdelete'
+        end
+        vim.cmd 'quit'
+      end,
+    },
+    {
+      '<BS>',
+      function()
+        if vim.bo.modified then
+          vim.cmd 'write | Bdelete'
+        else
+          vim.cmd 'Bdelete'
+        end
+      end,
+    },
   },
 
   [{ 'n', 'x', 'o' }] = {
-    { 'gs', function() Load 'leap'.leap { target_windows = { vim.api.nvim_get_current_win() } } end },
+    {
+      'gs',
+      function()
+        Load('leap').leap { target_windows = { vim.api.nvim_get_current_win() } }
+      end,
+    },
   },
 
   [{ 'n', 'x', 'i', 't' }] = {
@@ -50,7 +71,7 @@ Load 'core.utils'.set_maps {
   },
 
   [{ 'n', 't' }] = {
-    { '<C-\\>t', Load("FTerm").toggle },
+    { '<C-\\>t', Load('FTerm').toggle },
   },
 
   [{ 'i', 'x' }] = {

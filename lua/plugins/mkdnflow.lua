@@ -1,4 +1,4 @@
-Load 'mkdnflow'.setup {
+Load('mkdnflow').setup {
   modules = {
     bib = false,
     buffers = false,
@@ -10,7 +10,7 @@ Load 'mkdnflow'.setup {
     maps = true,
     paths = true,
     tables = true,
-    yaml = false
+    yaml = false,
   },
   perspective = {
     priority = 'root',
@@ -31,22 +31,20 @@ Load 'mkdnflow'.setup {
       end
 
       vim.ui.input({
-          prompt = 'Link to: ',
-          default = '',
-          completion = 'file'
-        },
-        function(input)
-          vim.opt_local.iminsert = kb_layout -- back to the initial layout
-          link = input
-        end
-      )
+        prompt = 'Link to: ',
+        default = '',
+        completion = 'file',
+      }, function(input)
+        vim.opt_local.iminsert = kb_layout -- back to the initial layout
+        link = input
+      end)
 
       if not link then
         vim.cmd 'mode' -- clear the cmd-line
         return
-      elseif not link:match('://') then
+      elseif not link:match '://' then
         link = '/' .. link
-        if not link:match('.md$') then
+        if not link:match '.md$' then
           link = link .. '.md'
         end
       end
@@ -54,11 +52,13 @@ Load 'mkdnflow'.setup {
       return link
     end,
     transform_implicit = function(link)
-      if not link:match('://') then link = link:sub(2) end
+      if not link:match '://' then
+        link = link:sub(2)
+      end
       return link
     end,
   },
-  paths = { update_link_everywhere = true, },
+  paths = { update_link_everywhere = true },
   new_file_template = { use_template = false },
   to_do = {
     symbols = { ' ', 'x', ' ' },
@@ -68,11 +68,11 @@ Load 'mkdnflow'.setup {
     trim_whitespace = true,
     format_on_move = true,
     auto_extend_rows = true,
-    auto_extend_cols = true
+    auto_extend_cols = true,
   },
   mappings = {
     MkdnEnter = { { 'n', 'x' }, '<C-Space>' },
-    MkdnTab = false,  -- standard <C-t> does the same
+    MkdnTab = false, -- standard <C-t> does the same
     MkdnSTab = false, -- standard <C-d> does the same
     MkdnNextLink = false,
     MkdnPrevLink = false,
@@ -106,5 +106,5 @@ Load 'mkdnflow'.setup {
     MkdnTableNewColBefore = { 'n', 'ycb' },
     MkdnFoldSection = false,
     MkdnUnfoldSection = false,
-  }
+  },
 }

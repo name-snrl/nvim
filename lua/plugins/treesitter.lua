@@ -1,4 +1,4 @@
-Load 'nvim-treesitter.configs'.setup {
+Load('nvim-treesitter.configs').setup {
   ensure_installed = {
     'bash',
     'fish',
@@ -13,7 +13,8 @@ Load 'nvim-treesitter.configs'.setup {
 
     'css',
     'yaml',
-    'markdown', 'markdown_inline',
+    'markdown',
+    'markdown_inline',
     'dockerfile',
   },
 
@@ -57,6 +58,6 @@ Load 'nvim-treesitter.configs'.setup {
   rainbow = {
     enable = true,
     query = 'rainbow-parens',
-    strategy = Load 'ts-rainbow'.strategy.global,
-  }
+    strategy = Load('ts-rainbow').strategy.global,
+  },
 }

@@ -1,13 +1,13 @@
-Load 'nightfox'.setup {
+Load('nightfox').setup {
   options = {
     terminal_colors = false,
     styles = {
-      comments     = 'italic',
+      comments = 'italic',
       conditionals = 'bold',
-      functions    = 'italic',
-      keywords     = 'bold',
+      functions = 'italic',
+      keywords = 'bold',
     },
-    inverse = { match_paren = true, },
+    inverse = { match_paren = true },
   },
   palettes = {
     nordfox = {
@@ -16,24 +16,24 @@ Load 'nightfox'.setup {
       bg2 = '#38424d', -- +6 lightless
       bg3 = '#45515f', -- +6 lightless
       bg4 = '#516070', -- +6 lightless
-    }
+    },
   },
   groups = {
     all = {
-      WinBar                  = { link = 'StatusLine' },
-      WinBarNC                = { link = 'StatusLineNC' },
-      CursorLine              = { bg = 'bg2' },
-      Comment                 = { fg = 'bg4' },
-      EndOfBuffer             = { link = 'NonText' }, -- show end of buffer
+      WinBar = { link = 'StatusLine' },
+      WinBarNC = { link = 'StatusLineNC' },
+      CursorLine = { bg = 'bg2' },
+      Comment = { fg = 'bg4' },
+      EndOfBuffer = { link = 'NonText' }, -- show end of buffer
       --
-      IndentBlanklineIndent1  = { bg = 'bg1' },
-      IndentBlanklineIndent2  = { bg = 'bg2' },
+      IndentBlanklineIndent1 = { bg = 'bg1' },
+      IndentBlanklineIndent2 = { bg = 'bg2' },
       --
-      TelescopeNormal         = { bg = 'bg0' },
-      TelescopeSelection      = { fg = 'palette.red', style = 'bold' },
+      TelescopeNormal = { bg = 'bg0' },
+      TelescopeSelection = { fg = 'palette.red', style = 'bold' },
       TelescopeSelectionCaret = { fg = 'palette.red', style = 'bold' },
-    }
-  }
+    },
+  },
 }
 
-vim.cmd('colorscheme nordfox')
+vim.cmd 'colorscheme nordfox'

@@ -107,7 +107,7 @@ Standard sequences that I find useless:
 local utils = Load 'core.map_utils'
 local rec_opts = { remap = true }
 
-Load 'core.utils'.set_maps {
+Load('core.utils').set_maps {
   [{ 'n', 'x', 'i', 't' }] = {
     -- Submode for plugins, except C-\ e in command mode
     { '<C-q>', '<C-\\>', rec_opts },
@@ -115,69 +115,69 @@ Load 'core.utils'.set_maps {
 
   [{ 'n', 'x' }] = {
 
-    { '<Space>',    '<Leader>',               rec_opts },
+    { '<Space>', '<Leader>', rec_opts },
 
-    { 'gf',         '<Cmd>e <cfile><CR>' }, -- open even if file doesn't exist
+    { 'gf', '<Cmd>e <cfile><CR>' }, -- open even if file doesn't exist
 
     -- Do not overwrite the register when using the change operator
-    { 's',          '"_s' },
-    { 'c',          '"_c' },
-    { 'C',          '"_C' },
+    { 's', '"_s' },
+    { 'c', '"_c' },
+    { 'C', '"_C' },
 
     -- Marks
-    { "`",          "'" },
-    { "'",          "`" },
+    { '`', "'" },
+    { "'", '`' },
 
     -- move the cursor with the screen when scrolling
-    { '<C-e>',      utils.scroll_down },
-    { '<C-y>',      utils.scroll_up },
+    { '<C-e>', utils.scroll_down },
+    { '<C-y>', utils.scroll_up },
 
     -- Buffers managment
-    { '<C-j>',      utils.prev_buf_arg },
-    { '<C-k>',      utils.next_buf_arg },
-    { '<C-_>',      '<C-^>' },                -- swap to alternate
-    { '<C-w>/',     '<Cmd>vsp #<CR>' },       -- alternate to a split window
+    { '<C-j>', utils.prev_buf_arg },
+    { '<C-k>', utils.next_buf_arg },
+    { '<C-_>', '<C-^>' }, -- swap to alternate
+    { '<C-w>/', '<Cmd>vsp #<CR>' }, -- alternate to a split window
     { '<C-w><C-_>', '<Cmd>tab split #<CR>' }, -- alternate to a new tab
-    { '<C-w>f',     '<Cmd>vsp <cfile><CR>' }, -- the same as the default, but in the vertical split
+    { '<C-w>f', '<Cmd>vsp <cfile><CR>' }, -- the same as the default, but in the vertical split
 
     -- Windows managment
-    { '<Left>',     '<C-w>h' },
-    { '<Down>',     '<C-w>j' },
-    { '<Up>',       '<C-w>k' },
-    { '<Right>',    '<C-w>l' },
-    { '<C-w>t',     '<C-w>T' },
+    { '<Left>', '<C-w>h' },
+    { '<Down>', '<C-w>j' },
+    { '<Up>', '<C-w>k' },
+    { '<Right>', '<C-w>l' },
+    { '<C-w>t', '<C-w>T' },
 
     -- Tabs managment
-    { 'gt',         '<Cmd>tabnew<CR>' },
-    { '<M-j>',      '<Cmd>+tabmove<CR>' },
-    { '<M-k>',      '<Cmd>-tabmove<CR>' },
-    { '<M-i>',      'gT' },
-    { '<M-o>',      'gt' },
-    { '<F1>',       '1gt' },
-    { '<F2>',       '2gt' },
-    { '<F3>',       '3gt' },
-    { '<F4>',       '4gt' },
-    { '<F5>',       '5gt' },
-    { '<F5>',       '5gt' },
-    { '<F6>',       '6gt' },
-    { '<F7>',       '7gt' },
-    { '<F8>',       '8gt' },
-    { '<F9>',       '9gt' },
-    { '<F10>',      '10gt' },
-    { '<F11>',      '11gt' },
-    { '<F12>',      '12gt' },
+    { 'gt', '<Cmd>tabnew<CR>' },
+    { '<M-j>', '<Cmd>+tabmove<CR>' },
+    { '<M-k>', '<Cmd>-tabmove<CR>' },
+    { '<M-i>', 'gT' },
+    { '<M-o>', 'gt' },
+    { '<F1>', '1gt' },
+    { '<F2>', '2gt' },
+    { '<F3>', '3gt' },
+    { '<F4>', '4gt' },
+    { '<F5>', '5gt' },
+    { '<F5>', '5gt' },
+    { '<F6>', '6gt' },
+    { '<F7>', '7gt' },
+    { '<F8>', '8gt' },
+    { '<F9>', '9gt' },
+    { '<F10>', '10gt' },
+    { '<F11>', '11gt' },
+    { '<F12>', '12gt' },
 
     -- Diagnostic
-    { '<Leader>e',  vim.diagnostic.open_float },
-    { '[d',         vim.diagnostic.goto_prev },
-    { ']d',         vim.diagnostic.goto_next },
+    { '<Leader>e', vim.diagnostic.open_float },
+    { '[d', vim.diagnostic.goto_prev },
+    { ']d', vim.diagnostic.goto_next },
 
-    { '<C-n>',      '<Cmd>%s///gn<CR>' }, -- print the number of matches
+    { '<C-n>', '<Cmd>%s///gn<CR>' }, -- print the number of matches
   },
 
   ['n'] = {
     -- Scrolling for term-mode
-    { '<S-PageUp>',   '<C-u>0M' },
+    { '<S-PageUp>', '<C-u>0M' },
     { '<S-PageDown>', '<C-d>0M' },
   },
 
@@ -195,7 +195,7 @@ Load 'core.utils'.set_maps {
 
   ['t'] = {
     -- Scrolling
-    { '<S-PageUp>',   '<C-\\><C-n><C-u>0M' },
+    { '<S-PageUp>', '<C-\\><C-n><C-u>0M' },
     { '<S-PageDown>', '<C-\\><C-n><C-d>0M' },
   },
 }

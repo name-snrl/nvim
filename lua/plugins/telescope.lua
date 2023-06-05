@@ -8,7 +8,7 @@ t.setup {
     layout_config = {
       bottom_pane = {
         height = 15,
-        prompt_position = 'bottom'
+        prompt_position = 'bottom',
       },
     },
     border = false,
@@ -53,30 +53,30 @@ t.setup {
       },
       mappings = {
         i = {
-          ['<CR>'] = Load 'telescope-undo.actions'.restore,
-          ['<C-c>'] = Load 'telescope-undo.actions'.yank_additions,
-          ['<C-x>'] = Load 'telescope-undo.actions'.yank_deletions,
+          ['<CR>'] = Load('telescope-undo.actions').restore,
+          ['<C-c>'] = Load('telescope-undo.actions').yank_additions,
+          ['<C-x>'] = Load('telescope-undo.actions').yank_deletions,
         },
-      }
-    }
-  }
+      },
+    },
+  },
 }
 
-t.load_extension('fzf')
-t.load_extension('zoxide')
-t.load_extension('undo')
-Load 'telescope._extensions.zoxide.config'.setup {
+t.load_extension 'fzf'
+t.load_extension 'zoxide'
+t.load_extension 'undo'
+Load('telescope._extensions.zoxide.config').setup {
   mappings = {
     default = {
       action = function(selection)
-        vim.cmd("lcd " .. selection.path)
+        vim.cmd('lcd ' .. selection.path)
       end,
       after_action = function(selection)
-        print("Directory changed to " .. selection.path)
+        print('Directory changed to ' .. selection.path)
         vim.fn.system('zoxide add ' .. selection.path)
-      end
-    }
-  }
+      end,
+    },
+  },
 }
 
 -- TODO: The ability to see unlisted help and man buffers in builin.buffers.

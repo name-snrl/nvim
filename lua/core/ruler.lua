@@ -1,6 +1,8 @@
 _G.get_keymap = function()
   local lang = vim.b.keymap_name
-  if lang then return string.format('[%s]', lang) end
+  if lang then
+    return string.format('[%s]', lang)
+  end
   return ' '
 end
 
@@ -10,7 +12,9 @@ local watch_head = vim.loop.new_fs_event()
 
 _G.get_branch = function()
   local cache = branches_per_buf[vim.api.nvim_get_current_buf()]
-  if cache then return cache end
+  if cache then
+    return cache
+  end
   return ' '
 end
 
@@ -30,7 +34,7 @@ local function resolve_branch(bufnr, git_dir)
   if f then
     local head = f:read()
     f:close()
-    local branch = head:match('ref: refs/heads/(.+)$')
+    local branch = head:match 'ref: refs/heads/(.+)$'
     if branch then
       branches_per_buf[bufnr] = fmt(branch)
     else -- hash
@@ -38,11 +42,14 @@ local function resolve_branch(bufnr, git_dir)
     end
   end
 
-  watch_head:start(head_file, {}, vim.schedule_wrap(
-    function()
+  watch_head:start(
+    head_file,
+    {},
+    vim.schedule_wrap(function()
       resolve_branch(bufnr, git_dir)
       vim.cmd 'redraw!'
-    end))
+    end)
+  )
 end
 
 local function define_git_branch(bufnr)
@@ -74,12 +81,12 @@ local function define_git_branch(bufnr)
         local file = io.open(try_git_path)
         if file then
           git_dir = file:read()
-          git_dir = git_dir and git_dir:match('gitdir: (.+)$')
+          git_dir = git_dir and git_dir:match 'gitdir: (.+)$'
           file:close()
         end
         -- submodule / relative file path
-        if git_dir and git_dir:sub(1, 1) ~= '/' and not git_dir:match('^%a:.*$') then
-          git_dir = try_git_path:match('(.*).git') .. git_dir
+        if git_dir and git_dir:sub(1, 1) ~= '/' and not git_dir:match '^%a:.*$' then
+          git_dir = try_git_path:match '(.*).git' .. git_dir
         end
       end
       if git_dir then
@@ -92,7 +99,7 @@ local function define_git_branch(bufnr)
       end
     end
 
-    root_dir = root_dir:match('(.*)/.-')
+    root_dir = root_dir:match '(.*)/.-'
   end
 
   if git_dir then
@@ -101,13 +108,13 @@ local function define_git_branch(bufnr)
   end
 end
 
-Load 'core.utils'.create_autocmds {
+Load('core.utils').create_autocmds {
   BufEnter = {
     group = 'core.ruler',
     callback = function(ev)
       if vim.api.nvim_buf_get_option(ev.buf, 'buftype') == '' then
         define_git_branch(ev.buf)
       end
-    end
+    end,
   },
 }

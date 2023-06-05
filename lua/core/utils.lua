@@ -2,18 +2,15 @@ local M = {}
 
 M.set_opts = function(options)
   for k, v in pairs(options) do
-    if tostring(v):match('^+=') then
+    if tostring(v):match '^+=' then
       -- append
       vim.opt[k]:append(v:gsub('+=', ''))
-
-    elseif tostring(v):match('^%^=') then
+    elseif tostring(v):match '^%^=' then
       -- prepend
       vim.opt[k]:prepend(v:gsub('%^=', ''))
-
-    elseif tostring(v):match('^-=') then
+    elseif tostring(v):match '^-=' then
       -- remove
       vim.opt[k]:remove(v:gsub('-=', ''))
-
     else
       vim.opt[k] = v
     end
@@ -22,18 +19,15 @@ end
 
 M.set_opts_local = function(options)
   for k, v in pairs(options) do
-    if tostring(v):match('^+=') then
+    if tostring(v):match '^+=' then
       -- append
       vim.opt_local[k]:append(v:gsub('+=', ''))
-
-    elseif tostring(v):match('^%^=') then
+    elseif tostring(v):match '^%^=' then
       -- prepend
       vim.opt_local[k]:prepend(v:gsub('%^=', ''))
-
-    elseif tostring(v):match('^-=') then
+    elseif tostring(v):match '^-=' then
       -- remove
       vim.opt_local[k]:remove(v:gsub('-=', ''))
-
     else
       vim.opt_local[k] = v
     end
@@ -41,7 +35,6 @@ M.set_opts_local = function(options)
 end
 
 M.set_maps = function(mapping, arg1, arg2)
-
   -- Valid mapping formats:
   --
   --set_maps {
@@ -69,7 +62,7 @@ M.set_maps = function(mapping, arg1, arg2)
   end
 
   for key, value in pairs(mapping) do
-    if type(value) == "table" then
+    if type(value) == 'table' then
       local mode = key
       local tbl = value
 

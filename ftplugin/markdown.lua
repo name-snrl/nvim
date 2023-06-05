@@ -8,7 +8,9 @@ end
 
 local function toggle_preview()
   local ok, peek = pcall(require, 'peek')
-  if not ok then return end
+  if not ok then
+    return
+  end
   if peek.is_open() then
     peek.close()
   else
@@ -16,18 +18,18 @@ local function toggle_preview()
   end
 end
 
-Load 'core.utils'.set_maps {
+Load('core.utils').set_maps {
   ['!'] = {
     { '<C-_>', '<C-^>' },
   },
   ['i'] = {
-    { '<C-j>',   '<Cmd>undo<CR>' },
-    { '<C-k>',   '<Cmd>redo<CR>' },
+    { '<C-j>', '<Cmd>undo<CR>' },
+    { '<C-k>', '<Cmd>redo<CR>' },
     -- auto new undoable edit
     { '<Space>', '<C-g>u<Space>' },
-    { '<C-m>',   '<C-g>u<C-m>' },
-    { '<C-w>',   '<C-g>u<C-w>' },
-    { '<C-u>',   '<C-g>u<C-u>' },
+    { '<C-m>', '<C-g>u<C-m>' },
+    { '<C-w>', '<C-g>u<C-w>' },
+    { '<C-u>', '<C-g>u<C-u>' },
   },
   [{ 'n', 'x' }] = {
     { '<Leader>/', toggle_layout },
@@ -35,14 +37,14 @@ Load 'core.utils'.set_maps {
   },
 }
 
-Load 'core.utils'.set_opts_local {
+Load('core.utils').set_opts_local {
   conceallevel = 2,
   textwidth = 80,
   undolevels = 10000,
   keymap = 'russian-markdown',
 }
 
-Load 'core.utils'.create_autocmds {
+Load('core.utils').create_autocmds {
   -- scrolloff for insert-mode
   CursorMovedI = {
     group = 'ftplugin.markdown',
@@ -61,6 +63,6 @@ Load 'core.utils'.create_autocmds {
   },
 }
 
-Load 'core.utils'.set_hls {
+Load('core.utils').set_hls {
   DiagnosticVirtualTextError = { link = 'Comment' },
 }

@@ -1,3 +1,3 @@
-Load 'core.utils'.set_opts_local {
-  formatoptions = "cqjrol",
+Load('core.utils').set_opts_local {
+  formatoptions = 'cqjrol',
 }

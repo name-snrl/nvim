@@ -16,69 +16,65 @@ np.setup {
 }
 
 np.add_rules {
-  rl(' ', ' ', '-markdown')
-      :with_pair(function(opts)
-        local pair = opts.line:sub(opts.col - 1, opts.col)
-        return vim.tbl_contains({ '()', '[]', '{}' }, pair)
-      end),
+  rl(' ', ' ', '-markdown'):with_pair(function(opts)
+    local pair = opts.line:sub(opts.col - 1, opts.col)
+    return vim.tbl_contains({ '()', '[]', '{}' }, pair)
+  end),
   rl('( ', ' )', '-markdown')
-      :with_pair(function() return false end)
-      :with_move(function(opts)
-        return opts.prev_char:match('.%)') ~= nil
-      end)
-      :use_key(')'),
+    :with_pair(function()
+      return false
+    end)
+    :with_move(function(opts)
+      return opts.prev_char:match '.%)' ~= nil
+    end)
+    :use_key ')',
   rl('{ ', ' }', '-markdown')
-      :with_pair(function() return false end)
-      :with_move(function(opts)
-        return opts.prev_char:match('.%}') ~= nil
-      end)
-      :use_key('}'),
+    :with_pair(function()
+      return false
+    end)
+    :with_move(function(opts)
+      return opts.prev_char:match '.%}' ~= nil
+    end)
+    :use_key '}',
   rl('[ ', ' ]', '-markdown')
-      :with_pair(function() return false end)
-      :with_move(function(opts)
-        return opts.prev_char:match('.%]') ~= nil
-      end)
-      :use_key(']')
+    :with_pair(function()
+      return false
+    end)
+    :with_move(function(opts)
+      return opts.prev_char:match '.%]' ~= nil
+    end)
+    :use_key ']',
 }
 
 -- TODO change the opening pairs from '_' to '^_' and ' _' so that the role is
 -- only called after a space or at the beginning of a line.
 np.add_rules {
-  rl('_', '_', 'markdown')
-      :with_move(function(opts)
-        -- if prev char is not pair
-        return opts.line:sub(opts.col - 1, opts.col - 1) ~= '_'
-      end),
+  rl('_', '_', 'markdown'):with_move(function(opts)
+    -- if prev char is not pair
+    return opts.line:sub(opts.col - 1, opts.col - 1) ~= '_'
+  end),
 
-  rl('__', '__', 'markdown')
-      :with_pair(cond.none())
-      :with_move(function(opts)
-        return opts.prev_char:match('._') ~= nil
-      end),
+  rl('__', '__', 'markdown'):with_pair(cond.none()):with_move(function(opts)
+    return opts.prev_char:match '._' ~= nil
+  end),
 
-  rl('*', '*', 'markdown')
-      :with_move(function(opts)
-        -- if prev char is not pair
-        return opts.line:sub(opts.col - 1, opts.col - 1) ~= '*'
-      end),
+  rl('*', '*', 'markdown'):with_move(function(opts)
+    -- if prev char is not pair
+    return opts.line:sub(opts.col - 1, opts.col - 1) ~= '*'
+  end),
 
-  rl('**', '**', 'markdown')
-      :with_pair(cond.none())
-      :with_move(function(opts)
-        return opts.prev_char:match('.%*') ~= nil
-      end),
+  rl('**', '**', 'markdown'):with_pair(cond.none()):with_move(function(opts)
+    return opts.prev_char:match '.%*' ~= nil
+  end),
 
-  rl('$', '$', 'markdown')
-      :with_move(function(opts)
-        -- if prev char is not pair
-        return opts.line:sub(opts.col - 1, opts.col - 1) ~= '$'
-      end),
+  rl('$', '$', 'markdown'):with_move(function(opts)
+    -- if prev char is not pair
+    return opts.line:sub(opts.col - 1, opts.col - 1) ~= '$'
+  end),
 
-  rl('$$', '$$', 'markdown')
-      :with_pair(cond.none())
-      :with_move(function(opts)
-        return opts.prev_char:match('.%$') ~= nil
-      end),
+  rl('$$', '$$', 'markdown'):with_pair(cond.none()):with_move(function(opts)
+    return opts.prev_char:match '.%$' ~= nil
+  end),
 
   -- TODO set-up spaces between pairs for markdown
   -- so that it does not end other pairs with a space.

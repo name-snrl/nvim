@@ -27,4 +27,4 @@ _G.get_winbar = function()
   return source:sub(1, col) .. '%#Normal# %<%=%(%* %y%f%m%r%) '
 end
 
-vim.opt.winbar = "%{%v:lua.get_winbar()%}"
+vim.opt.winbar = '%{%v:lua.get_winbar()%}'

@@ -5,7 +5,7 @@ return {
   gi = tel.lsp_implementations,
   gr = tel.lsp_references,
   gD = lsp.declaration,
-  K  = lsp.hover,
+  K = lsp.hover,
   cv = lsp.rename,
   gq = lsp.format,
   --['<C-k>']     = lsp.signature_help,

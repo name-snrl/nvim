@@ -1,8 +1,8 @@
-Load 'lspconfig'.nil_ls.setup {
+Load('lspconfig').nil_ls.setup {
   settings = {
     ['nil'] = {
       formatting = {
-        command = { "nixpkgs-fmt" },
+        command = { 'nixpkgs-fmt' },
       },
       nix = {
         flake = { autoArchive = true },
@@ -11,6 +11,6 @@ Load 'lspconfig'.nil_ls.setup {
   },
   on_attach = function(_, bufnr)
     local mapping = Load 'plugins.lspconfig.mapping'
-    Load 'core.utils'.set_maps(mapping, 'n', { buffer = bufnr })
-  end
+    Load('core.utils').set_maps(mapping, 'n', { buffer = bufnr })
+  end,
 }

@@ -2,6 +2,7 @@ local b = Load 'null-ls.builtins'
 Load 'null-ls'.setup {
   sources = {
     b.formatting.deno_fmt,
+    b.formatting.stylua,
     b.diagnostics.ltrs.with {
       args = {
         'check',

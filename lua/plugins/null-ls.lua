@@ -1,15 +1,21 @@
 local b = Load 'null-ls.builtins'
-Load 'null-ls'.setup {
+Load('null-ls').setup {
   sources = {
     b.formatting.deno_fmt,
     b.formatting.stylua,
+    b.formatting.shfmt.with {
+      args = { '--case-indent', '--indent', '4', '$FILENAME' },
+    },
     b.diagnostics.ltrs.with {
       args = {
         'check',
         '--raw',
-        '--mother-tongue', 'ru-RU',
-        '--disabled-rules', 'WHITESPACE_RULE',
-        '--text', '\\$TEXT', -- add a symbol to avoid the error when the text starts with a dash
+        '--mother-tongue',
+        'ru-RU',
+        '--disabled-rules',
+        'WHITESPACE_RULE',
+        '--text',
+        '\\$TEXT', -- add a symbol to avoid the error when the text starts with a dash
       },
       diagnostics_postprocess = function(diagnostic)
         if diagnostic.lnum == 0 then

@@ -3,7 +3,6 @@ Load 'nvim-treesitter.configs'.setup {
     'bash',
     'fish',
     'lua',
-    'python',
     'nix',
     'vim',
     'go',

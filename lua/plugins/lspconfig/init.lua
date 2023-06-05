@@ -4,7 +4,6 @@ Load 'plugins.lspconfig.nil'
 
 local servers = {
   'bashls',
-  'pylsp',
 }
 
 for _, server in pairs(servers) do

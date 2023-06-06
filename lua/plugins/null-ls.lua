@@ -1,8 +1,7 @@
 local b = Load 'null-ls.builtins'
 Load('null-ls').setup {
   on_attach = function(client, bufnr)
-    local mapping = Load 'plugins.lspconfig.mapping'
-    Load('core.utils').set_maps(mapping, 'n', { buffer = bufnr })
+    vim.keymap.set('n', 'gq', vim.lsp.buf.format, { buffer = bufnr })
   end,
   sources = {
     b.formatting.deno_fmt,

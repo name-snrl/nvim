@@ -71,7 +71,7 @@ Load('mkdnflow').setup {
     auto_extend_cols = true,
   },
   mappings = {
-    MkdnEnter = { { 'n', 'x' }, '<C-Space>' },
+    MkdnEnter = false,
     MkdnTab = false, -- standard <C-t> does the same
     MkdnSTab = false, -- standard <C-d> does the same
     MkdnNextLink = false,
@@ -80,7 +80,7 @@ Load('mkdnflow').setup {
     MkdnPrevHeading = false, -- standard ftplugin contains this
     MkdnGoBack = false,
     MkdnGoForward = false,
-    MkdnCreateLink = false,
+    MkdnCreateLink = { 'n', 'yu' },
     MkdnCreateLinkFromClipboard = false,
     MkdnFollowLink = { 'n', 'gd' },
     MkdnDestroyLink = { 'n', 'du' },

@@ -53,7 +53,7 @@ return packer.startup(function(use)
   }
   use 'scalameta/nvim-metals'
   use {
-    'j-hui/fidget.nvim',
+    'j-hui/fidget.nvim', tag = 'legacy',
     config = function()
       Load('fidget').setup {}
     end,

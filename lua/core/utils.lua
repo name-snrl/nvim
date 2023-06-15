@@ -45,10 +45,12 @@ M.set_maps = function(mapping, arg1, arg2)
   --
   -- OR
   --
-  --set_maps(){
+  --set_maps({
   --  ['<C-a>'] = rhs,
   --  qw = rhs,
   --}, { buffer = 0 }, 'n')
+  --
+  -- if there are no additional args, then modes are { 'n', 'x' }
 
   local modes
   local options

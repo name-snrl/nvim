@@ -1,14 +1,13 @@
 _G.get_keymap = function()
-  local lang = vim.b.keymap_name
-  if lang then
-    return string.format('[%s]', lang)
+  if vim.opt_local.iminsert:get() ~= 0 then
+    return string.format('[%s]', vim.b.keymap_name)
   end
   return ' '
 end
 
 local branches_per_buf = {}
 local git_dir_per_file_dir = {}
-local watch_head = vim.loop.new_fs_event()
+local watch_head = vim.uv.new_fs_event()
 
 _G.get_branch = function()
   local cache = branches_per_buf[vim.api.nvim_get_current_buf()]
@@ -58,7 +57,7 @@ local function define_git_branch(bufnr)
 
   local buf_name = vim.api.nvim_buf_get_name(bufnr)
   if buf_name == '' then
-    file_dir = vim.loop.cwd()
+    file_dir = vim.uv.cwd()
   else
     file_dir = vim.fs.dirname(buf_name)
   end
@@ -71,7 +70,7 @@ local function define_git_branch(bufnr)
     end
 
     local try_git_path = root_dir .. '/.git'
-    local git_file_stat = vim.loop.fs_stat(try_git_path)
+    local git_file_stat = vim.uv.fs_stat(try_git_path)
 
     if git_file_stat then
       if git_file_stat.type == 'directory' then
@@ -90,7 +89,7 @@ local function define_git_branch(bufnr)
         end
       end
       if git_dir then
-        local head_file_stat = vim.loop.fs_stat(git_dir .. '/HEAD')
+        local head_file_stat = vim.uv.fs_stat(git_dir .. '/HEAD')
         if head_file_stat and head_file_stat.type == 'file' then
           break
         else

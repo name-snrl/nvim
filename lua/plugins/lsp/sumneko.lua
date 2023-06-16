@@ -18,8 +18,5 @@ Load('lspconfig').lua_ls.setup {
       },
     },
   },
-  on_attach = function(_, bufnr)
-    local mapping = Load 'plugins.lspconfig.mapping'
-    Load('core.utils').set_maps(mapping, 'n', { buffer = bufnr })
-  end,
+  on_attach = Load 'plugins.lsp.basics'.on_attach,
 }

@@ -42,13 +42,13 @@ return packer.startup(function(use)
   use {
     'neovim/nvim-lspconfig',
     config = function()
-      Load 'plugins.lspconfig'
+      Load 'plugins.lsp.lspconfig'
     end,
   }
   use {
     'name-snrl/null-ls.nvim', -- TODO replace by upstream, when PR will be merged
     config = function()
-      Load 'plugins.null-ls'
+      Load 'plugins.lsp.null-ls'
     end,
   }
   use 'scalameta/nvim-metals'

@@ -7,5 +7,5 @@ local servers = {
 }
 
 for _, server in pairs(servers) do
-  Load('lspconfig')[server].setup { on_attach = Load 'plugins.lsp.basics'.on_attach }
+  Load('lspconfig')[server].setup { on_attach = Load('plugins.lsp.basics').on_attach }
 end

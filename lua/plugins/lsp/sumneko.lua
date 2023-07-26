@@ -16,7 +16,10 @@ Load('lspconfig').lua_ls.setup {
       telemetry = {
         enable = false,
       },
+      format = {
+        enable = false,
+      },
     },
   },
-  on_attach = Load 'plugins.lsp.basics'.on_attach,
+  on_attach = Load('plugins.lsp.basics').on_attach,
 }

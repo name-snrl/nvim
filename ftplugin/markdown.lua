@@ -1,11 +1,3 @@
-local function toggle_layout()
-  if vim.opt_local.iminsert:get() == 1 then
-    vim.opt_local.iminsert = 0
-  else
-    vim.opt_local.iminsert = 1
-  end
-end
-
 local function toggle_preview()
   local ok, peek = pcall(require, 'peek')
   if not ok then
@@ -19,9 +11,6 @@ local function toggle_preview()
 end
 
 Load('core.utils').set_maps {
-  ['!'] = {
-    { '<C-_>', '<C-^>' },
-  },
   ['i'] = {
     { '<C-j>', '<Cmd>undo<CR>' },
     { '<C-k>', '<Cmd>redo<CR>' },
@@ -32,7 +21,6 @@ Load('core.utils').set_maps {
     { '<C-u>', '<C-g>u<C-u>' },
   },
   [{ 'n', 'x' }] = {
-    { '<Leader>/', toggle_layout },
     { '<Leader>p', toggle_preview },
   },
 }
@@ -41,7 +29,6 @@ Load('core.utils').set_opts_local {
   conceallevel = 2,
   textwidth = 80,
   undolevels = 10000,
-  keymap = 'russian-markdown',
 }
 
 Load('core.utils').create_autocmds {

@@ -10,7 +10,7 @@ Load('core.utils').set_opts {
   cursorline = true,
   signcolumn = 'yes',
   laststatus = 0,
-  rulerformat = '%40(%4{v:lua.get_keymap()} %-17{v:lua.get_branch()} %-13(%l,%c%V%) %P%)',
+  rulerformat = '%35(%-17{v:lua.get_branch()} %-13(%l,%c%V%) %P%)',
   list = true,
   listchars = 'tab:▸ ',
   linebreak = true,

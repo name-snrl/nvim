@@ -24,18 +24,11 @@ Load('mkdnflow').setup {
     implicit_extension = nil,
     transform_explicit = function()
       local link
-      -- toggle to the english layout
-      local kb_layout = vim.opt_local.iminsert:get()
-      if kb_layout ~= 0 then
-        vim.opt_local.iminsert = 0
-      end
-
       vim.ui.input({
         prompt = 'Link to: ',
         default = '',
         completion = 'file',
       }, function(input)
-        vim.opt_local.iminsert = kb_layout -- back to the initial layout
         link = input
       end)
 

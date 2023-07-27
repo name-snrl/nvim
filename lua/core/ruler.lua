@@ -1,10 +1,3 @@
-_G.get_keymap = function()
-  if vim.opt_local.iminsert:get() ~= 0 then
-    return string.format('[%s]', vim.b.keymap_name)
-  end
-  return ' '
-end
-
 local branches_per_buf = {}
 local git_dir_per_file_dir = {}
 local watch_head = vim.uv.new_fs_event()

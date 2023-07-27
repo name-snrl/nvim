@@ -32,8 +32,6 @@ Load('core.utils').set_maps {
       end,
     },
 
-    { '<Leader>c', '<Cmd>ColorizerReloadAllBuffers<CR>' },
-
     {
       '<Del>',
       function()
@@ -55,6 +53,26 @@ Load('core.utils').set_maps {
         end
       end,
     },
+
+    { '<Leader>c', '<Cmd>ColorizerReloadAllBuffers<CR>' },
+    { '<Leader>t', '<Cmd>Translate RU<CR>' },
+    { '<Leader>e', '<Cmd>Translate EN -parse_before=trim,concat -output=insert<CR>' },
+    { '<Leader>r', '<Cmd>Translate RU -parse_before=trim,concat -output=insert<CR>' },
+  },
+
+  n = {
+    {
+      '<Leader>w',
+      function()
+        local pos = vim.api.nvim_win_get_cursor(0)
+        vim.cmd 'norm viw'
+        vim.cmd 'Translate RU'
+        vim.cmd 'norm v'
+        vim.api.nvim_win_set_cursor(0, pos)
+      end,
+    },
+    { 'gce', '<Cmd>Translate EN -comment -parse_before=trim,concat -output=insert<CR>' },
+    { 'gcr', '<Cmd>Translate RU -comment -parse_before=trim,concat -output=insert<CR>' },
   },
 
   [{ 'n', 'x', 'o' }] = {

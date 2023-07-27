@@ -83,7 +83,7 @@ mn
 
 ___
 
-<Leader> + b c f g j q u z
+<Leader> + b c e f g j q r t u z
 
 
 ## Insert mode

@@ -53,7 +53,8 @@ return packer.startup(function(use)
   }
   use 'scalameta/nvim-metals'
   use {
-    'j-hui/fidget.nvim', tag = 'legacy',
+    'j-hui/fidget.nvim',
+    tag = 'legacy',
     config = function()
       Load('fidget').setup {}
     end,
@@ -167,6 +168,12 @@ return packer.startup(function(use)
 
   -- Misc
   use 'norcalli/nvim-colorizer.lua'
+  use {
+    'uga-rosa/translate.nvim',
+    config = function()
+      Load 'plugins.translate'
+    end,
+  }
   use {
     'toppair/peek.nvim',
     run = 'deno task --quiet build:fast',

@@ -72,7 +72,7 @@ Load('telescope._extensions.zoxide.config').setup {
         vim.cmd('lcd ' .. selection.path)
       end,
       after_action = function(selection)
-        print('Directory changed to ' .. selection.path)
+        vim.print('Directory changed to ' .. selection.path)
         vim.fn.system('zoxide add ' .. selection.path)
       end,
     },

@@ -4,7 +4,7 @@ local fn = vim.fn
 local install_path = fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
 local is_bootstraped
 if fn.empty(fn.glob(install_path)) > 0 then
-  print 'Cloning packer...'
+  vim.print 'Cloning packer...'
   is_bootstraped = fn.system {
     'git',
     'clone',

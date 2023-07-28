@@ -1,8 +1,8 @@
 _G.Load = function(path)
   local ok, mod = pcall(require, path)
   if not ok then
-    print('Error loading module ' .. path)
-    print(mod)
+    vim.print('Error loading module ' .. path)
+    vim.print(mod)
   else
     return mod
   end

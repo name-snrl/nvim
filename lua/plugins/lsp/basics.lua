@@ -15,7 +15,7 @@ M.mapping = function(bufnr)
       { '<C-k>', vim.lsp.buf.signature_help },
       --{ '<Leader>wa', vim.lsp.buf.add_workspace_folder },
       --{ '<Leader>wr', vim.lsp.lsp.remove_workspace_folder },
-      --{ '<Leader>wl', function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end },
+      --{ '<Leader>wl', function() vim.print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end },
       { 'dz', telescope.lsp_type_definitions },
       { 'cv', vim.lsp.buf.rename },
       { 'gr', telescope.lsp_references },

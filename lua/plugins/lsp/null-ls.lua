@@ -18,15 +18,8 @@ Load('null-ls').setup {
         '--disabled-rules',
         'WHITESPACE_RULE',
         '--text',
-        '\\$TEXT', -- add a symbol to avoid the error when the text starts with a dash
+        '$TEXT',
       },
-      diagnostics_postprocess = function(diagnostic)
-        if diagnostic.lnum == 0 then
-          diagnostic.col = diagnostic.col - 1
-          diagnostic.end_col = diagnostic.end_col - 1
-        end
-        return diagnostic
-      end,
       filetypes = { 'text', 'markdown', 'gitcommit' },
     },
   },

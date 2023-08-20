@@ -5,7 +5,7 @@ Load('lspconfig').nil_ls.setup {
         command = { 'nixpkgs-fmt' },
       },
       nix = {
-        flake = { autoArchive = true },
+        flake = { autoArchive = false },
       },
     },
   },

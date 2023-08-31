@@ -16,7 +16,7 @@ Load('null-ls').setup {
         '--mother-tongue',
         'ru-RU',
         '--disabled-rules',
-        'WHITESPACE_RULE',
+        'WHITESPACE_RULE,EN_UPPER_CASE_NGRAM',
         '--text',
         '$TEXT',
       },

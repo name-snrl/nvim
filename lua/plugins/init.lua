@@ -167,7 +167,7 @@ return packer.startup(function(use)
   }
 
   -- Misc
-  use 'norcalli/nvim-colorizer.lua'
+  use 'NvChad/nvim-colorizer.lua'
   use {
     'uga-rosa/translate.nvim',
     config = function()

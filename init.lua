@@ -10,7 +10,6 @@ end
 
 vim.opt.runtimepath:prepend((vim.env.XDG_CONFIG_HOME or '~/.config') .. '/nvim')
 
-Load 'impatient'
 Load 'core.options'
 Load 'core.mapping'
 Load 'core.autocmds'

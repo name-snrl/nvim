@@ -31,6 +31,10 @@ Load('core.utils').set_opts_local {
   undolevels = 10000,
 }
 
+Load('core.utils').set_g {
+  markdown_folding = 1
+}
+
 Load('core.utils').create_autocmds {
   -- scrolloff for insert-mode
   CursorMovedI = {

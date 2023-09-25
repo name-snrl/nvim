@@ -1,72 +1,64 @@
 {
-  description = "Overlay containing a wraper around neovim-unwrapped";
+  description = "Overlay containing a wrapper around pkgs.neovim-unwrapped";
   outputs = _: {
-    overlays.default = final: prev: {
-      nvim =
-        let
-          init = ./init.lua;
-          runtime = ./.;
-          deno-with-webkitgtk = with prev; symlinkJoin {
-            name = "deno-with-webkitgtk";
-            paths = [ deno ];
-            nativeBuildInputs = [ makeWrapper ];
-            postBuild =
-              let libPath = lib.makeLibraryPath ([ gcc-unwrapped glib gtk3 webkitgtk ]);
-              in "wrapProgram $out/bin/deno --prefix LD_LIBRARY_PATH : ${libPath}";
-          };
-
-          binPath = with prev; lib.makeBinPath [
-            gnumake
-            gcc
-
-            # lsp
-            nil
-            nodePackages.bash-language-server
-            sumneko-lua-language-server
-
-            # fmt
-            nixpkgs-fmt
-            shfmt
-            stylua
-            deno-with-webkitgtk
-
-            # diagnostics
-            shellcheck
-            languagetool-rust
+    overlays.default = final: prev:
+      let
+        repo = "https://github.com/name-snrl/nvim";
+        extraBinPath = with final; [
+          gnumake # for required telescope-fzf-native.nvim
+          gcc # for required telescope-fzf-native.nvim
+          curl # for required translate.nvim
+          fd # for required telescope.nvim
+          ripgrep # for required telescope.nvim
+          zoxide # for required telescope-zoxide
+        ];
+        extraTSParsers =
+          with final.vimPlugins.nvim-treesitter-parsers; [
+            fish
+            go
+            rust
+            starlark
+            yuck
+            css
+            yaml
+            dockerfile
           ];
+      in
+      rec {
+        nvim = final.callPackage ./wrapper.nix { };
 
-          binPathExtra = with prev; lib.makeBinPath [
-            metals
-            scalafmt
-          ];
-
-          binPathWithExtra = builtins.concatStringsSep ":" [ binPath binPathExtra ];
-
-          cfg = path:
-            let
-              res = prev.neovimUtils.makeNeovimConfig {
-                withRuby = false;
-                vimAlias = true;
-                viAlias = true;
-                plugins = [ ];
-              };
-            in
-            res // {
-              wrapRc = false;
-              wrapperArgs = res.wrapperArgs ++ [
-                "--add-flags"
-                "--cmd 'set rtp+=${runtime}' -u ${init}"
-                "--suffix"
-                "PATH"
-                ":"
-                path
-              ];
-            };
-        in
-        with prev; {
-          mini = wrapNeovimUnstable neovim-unwrapped (cfg binPath);
-          full = wrapNeovimUnstable neovim-unwrapped (cfg binPathWithExtra);
+        nvim-vanila = nvim.override {
+          extraName = "-vanila";
+          viAlias = true;
+          inherit repo;
+          inherit extraBinPath;
         };
-    };
+
+        nvim-light = nvim.override {
+          extraName = "-light";
+          viAlias = true;
+          withPython3 = true;
+          withLua = true;
+          withNix = true;
+          withBash = true;
+          inherit repo;
+          inherit extraBinPath;
+          inherit extraTSParsers;
+        };
+
+        nvim-full = nvim.override {
+          extraName = "-full";
+          viAlias = true;
+          withPython3 = true;
+          withLua = true;
+          withNix = true;
+          withBash = true;
+          withScala = true;
+          withMarkdown = true;
+          inherit repo;
+          inherit extraBinPath;
+          inherit extraTSParsers;
+        };
+      };
   };
 }

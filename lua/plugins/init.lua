@@ -165,11 +165,11 @@ Load('lazy').setup {
       Load 'plugins.translate'
     end,
   },
-  {
-    'toppair/peek.nvim',
-    build = 'deno task --quiet build:fast',
-    commit = '13736cf0d9e9da4d53cef8abc4f4c34a7e22268e', -- TODO
-  },
+  --{
+  --  'toppair/peek.nvim',
+  --  build = 'deno task --quiet build:fast',
+  --  commit = '13736cf0d9e9da4d53cef8abc4f4c34a7e22268e', -- TODO
+  --},
   -- TODO replace with https://github.com/microsoft/vscode-markdown-languageservice
   {
     'name-snrl/mkdnflow.nvim',

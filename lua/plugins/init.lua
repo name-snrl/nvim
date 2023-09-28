@@ -83,7 +83,9 @@ Load('lazy').setup {
       Load 'plugins.treesitter'
     end,
     dependencies = {
-      'HiPhish/nvim-ts-rainbow2',
+      -- TODO migrate to rainbow-delimiters.nvim
+      -- and don't forget about indent-blankline integration
+      --'HiPhish/nvim-ts-rainbow2',
     },
   },
 

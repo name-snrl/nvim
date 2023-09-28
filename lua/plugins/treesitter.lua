@@ -51,9 +51,9 @@ Load('nvim-treesitter.configs').setup {
   --  },
   --},
 
-  rainbow = {
-    enable = true,
-    query = 'rainbow-parens',
-    strategy = Load('ts-rainbow').strategy.global,
-  },
+  --rainbow = {
+  --  enable = true,
+  --  query = 'rainbow-parens',
+  --  strategy = Load('ts-rainbow').strategy.global,
+  --},
 }

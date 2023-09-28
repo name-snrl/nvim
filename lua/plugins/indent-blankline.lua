@@ -1,18 +1,14 @@
-Load('indent_blankline').setup {
-  char = '',
-  char_highlight_list = {
-    'IndentBlanklineIndent1',
-    'IndentBlanklineIndent2',
+local highlight = { 'Whitespace', 'CursorColumn' }
+return {
+  'lukas-reineke/indent-blankline.nvim',
+  main = 'ibl',
+  opts = {
+    indent = { highlight = highlight, char = '' },
+    whitespace = {
+      highlight = highlight,
+      remove_blankline_trail = false,
+    },
+    scope = { enabled = false }, -- TODO test scopes
+    exclude = { filetypes = { 'markdown' } },
   },
-  space_char_highlight_list = {
-    'IndentBlanklineIndent1',
-    'IndentBlanklineIndent2',
-  },
-  show_trailing_blankline_indent = false,
-}
-Load('core.utils').set_g {
-  indent_blankline_filetype_exclude = vim.list_extend(
-    vim.g.indent_blankline_filetype_exclude,
-    { 'lisp', 'yuck', 'markdown' }
-  ),
 }

@@ -152,12 +152,7 @@ Load('lazy').setup {
       Load 'plugins.nightfox-colorscheme'
     end,
   },
-  {
-    'lukas-reineke/indent-blankline.nvim',
-    config = function()
-      Load 'plugins.indent-blankline'
-    end,
-  },
+  Load 'plugins.indent-blankline',
 
   -- Misc
   'NvChad/nvim-colorizer.lua',

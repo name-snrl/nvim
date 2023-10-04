@@ -33,4 +33,4 @@ Load('nightfox').setup {
   },
 }
 
-vim.cmd 'colorscheme nordfox'
+vim.cmd.colorscheme 'nordfox'

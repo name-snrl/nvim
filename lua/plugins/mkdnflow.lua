@@ -33,7 +33,7 @@ Load('mkdnflow').setup {
       end)
 
       if not link then
-        vim.cmd 'mode' -- clear the cmd-line
+        vim.cmd.mode() -- clear the cmd-line
         return
       elseif not link:match '://' then
         link = '/' .. link

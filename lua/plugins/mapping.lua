@@ -38,9 +38,9 @@ Load('core.utils').set_maps {
         if vim.bo.modified then
           vim.cmd 'write | Bdelete'
         else
-          vim.cmd 'Bdelete'
+          vim.cmd.Bdelete()
         end
-        vim.cmd 'quit'
+        vim.cmd.quit()
       end,
     },
     {
@@ -49,7 +49,7 @@ Load('core.utils').set_maps {
         if vim.bo.modified then
           vim.cmd 'write | Bdelete'
         else
-          vim.cmd 'Bdelete'
+          vim.cmd.Bdelete()
         end
       end,
     },
@@ -65,9 +65,9 @@ Load('core.utils').set_maps {
       '<Leader>w',
       function()
         local pos = vim.api.nvim_win_get_cursor(0)
-        vim.cmd 'norm viw'
-        vim.cmd 'Translate RU'
-        vim.cmd 'norm v'
+        vim.cmd.norm { 'viw', bang = true }
+        vim.cmd.Translate 'RU'
+        vim.cmd.norm { 'v', bang = true }
         vim.api.nvim_win_set_cursor(0, pos)
       end,
     },

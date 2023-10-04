@@ -39,7 +39,7 @@ local function resolve_branch(bufnr, git_dir)
     {},
     vim.schedule_wrap(function()
       resolve_branch(bufnr, git_dir)
-      vim.cmd 'redraw!'
+      vim.cmd.redraw { bang = true }
     end)
   )
 end

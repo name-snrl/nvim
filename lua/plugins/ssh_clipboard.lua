@@ -14,6 +14,6 @@ vim.fn.timer_start(1000, function()
       paste = { ['+'] = paste, ['*'] = paste },
     }
     vim.g.loaded_clipboard_provider = nil
-    vim.cmd 'runtime autoload/provider/clipboard.vim'
+    vim.cmd.runtime 'autoload/provider/clipboard.vim'
   end
 end)

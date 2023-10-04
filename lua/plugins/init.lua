@@ -155,7 +155,7 @@ Load('lazy').setup {
   Load 'plugins.indent-blankline',
 
   -- Misc
-  'NvChad/nvim-colorizer.lua',
+  { 'NvChad/nvim-colorizer.lua', main = 'colorizer', opts = { filetypes = {} } },
   {
     'uga-rosa/translate.nvim',
     config = function()

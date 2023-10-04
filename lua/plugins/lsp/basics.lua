@@ -12,7 +12,7 @@ M.mapping = function(bufnr)
       { 'gd', telescope.lsp_definitions },
       { 'K', vim.lsp.buf.hover },
       { 'gi', telescope.lsp_implementations },
-      { '<C-k>', vim.lsp.buf.signature_help },
+      --{ '<C-k>', vim.lsp.buf.signature_help },
       --{ '<Leader>wa', vim.lsp.buf.add_workspace_folder },
       --{ '<Leader>wr', vim.lsp.lsp.remove_workspace_folder },
       --{ '<Leader>wl', function() vim.print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end },

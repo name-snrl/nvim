@@ -44,6 +44,15 @@ t.setup {
       override_file_sorter = true,
       case_mode = 'smart_case',
     },
+    zoxide = {
+      mappings = {
+        default = {
+          action = function(selection)
+            vim.cmd.lcd(selection.path)
+          end,
+        },
+      },
+    },
     undo = {
       diff_context_lines = 5,
       layout_config = {
@@ -65,18 +74,5 @@ t.setup {
 t.load_extension 'fzf'
 t.load_extension 'zoxide'
 t.load_extension 'undo'
-Load('telescope._extensions.zoxide.config').setup {
-  mappings = {
-    default = {
-      action = function(selection)
-        vim.cmd('lcd ' .. selection.path)
-      end,
-      after_action = function(selection)
-        vim.print('Directory changed to ' .. selection.path)
-        vim.system('zoxide add ' .. selection.path)
-      end,
-    },
-  },
-}
 
 -- TODO: The ability to see unlisted help and man buffers in builin.buffers.

@@ -108,10 +108,14 @@ let
     vim.g.scala_support = 1
   '' + lib.optionalString withMarkdown ''
     vim.g.markdown_support = 1
-  '' + lib.optionalString (parsers != [ ]) ''
-    -- Add TS parsers to 'runtimepath'
-    vim.opt.runtimepath:prepend '${symlinkJoin { name = "nvim-ts-parsers"; paths = parsers; }}'
-  '' + lib.optionalString (repo != null) ''
+  '' + lib.optionalString (parsers != [ ]) (
+    let path = symlinkJoin { name = "nvim-ts-parsers"; paths = parsers; }; in ''
+      -- Add TS parsers to 'runtimepath'
+      vim.opt.runtimepath:prepend '${path}'
+      -- lazy.nvim resets 'rtp', so we need global to set 'rtp' inside cfg
+      vim.g.nix_ts_parsers = '${path}'
+    ''
+  ) + lib.optionalString (repo != null) ''
     -- Bootstrap cfg
     local repo = '${repo}'
     local cfg_path = vim.fn.stdpath 'config'

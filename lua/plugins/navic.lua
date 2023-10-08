@@ -18,8 +18,9 @@ _G.get_winbar = function()
   col = col - 2 -- don't count first chars of pattern
 
   -- add default winbar
-  local a = vim.api
-  local buftype = a.nvim_buf_get_option(a.nvim_get_current_buf(), 'buftype')
+  local buftype = vim.api.nvim_get_option_value('buftype', {
+    buf = vim.api.nvim_get_current_buf(),
+  })
 
   if buftype == 'help' or buftype == 'nofile' then
     return source:sub(1, col) .. '%#Normal# %<%=%* %t '

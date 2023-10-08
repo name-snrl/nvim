@@ -104,7 +104,7 @@ Load('core.utils').create_autocmds {
   BufEnter = {
     group = 'core.ruler',
     callback = function(ev)
-      if vim.api.nvim_buf_get_option(ev.buf, 'buftype') == '' then
+      if vim.api.nvim_get_option_value('buftype', { buf = ev.buf }) == '' then
         define_git_branch(ev.buf)
       end
     end,

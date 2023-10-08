@@ -15,7 +15,9 @@
         extraTSParsers =
           with final.vimPlugins.nvim-treesitter-parsers; [
             fish
+            vim
             go
+            c
             rust
             starlark
             yuck

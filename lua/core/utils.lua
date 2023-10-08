@@ -113,4 +113,12 @@ M.set_g = function(globals)
   end
 end
 
+M.is_nix_package = function(args)
+  if vim.g.is_nix_package == 1 then
+    return args.yes
+  else
+    return args.no
+  end
+end
+
 return M

@@ -77,33 +77,40 @@ let
     deno
   ];
 
-  binPath = lib.makeBinPath (extraBinPath ++ [ git ]
+  binPath = lib.makeBinPath (
+    [ git ]
+    ++ extraBinPath
     ++ lib.optionals withLua luaBins
     ++ lib.optionals withNix nixBins
     ++ lib.optionals withBash bashBins
     ++ lib.optionals withScala scalaBins
-    ++ lib.optionals withMarkdown markdownBins);
+    ++ lib.optionals withMarkdown markdownBins
+  );
 
-  parsers = symlinkJoin {
-    name = "nvim-treesitter-parsers";
-    paths = with vimPlugins.nvim-treesitter-parsers;
-      (extraTSParsers
-        ++ lib.optional withNix nix
-        ++ lib.optional withScala scala
-        ++ lib.optional withMarkdown markdown_inline);
-  };
+  parsers = with vimPlugins.nvim-treesitter-parsers;
+    extraTSParsers
+    ++ lib.optional withNix nix
+    ++ lib.optional withScala scala
+    ++ lib.optional withMarkdown markdown_inline;
 
-  toNum = bool: if bool == true then "1" else "0";
-
-  globals = lib.concatStringsSep ";"
-    (lib.singleton "vim.g.is_nix_package=1"
-      ++ lib.optional withLua "vim.g.lua_support=${toNum withLua}"
-      ++ lib.optional withNix "vim.g.nix_support=${toNum withNix}"
-      ++ lib.optional withBash "vim.g.bash_support=${toNum withBash}"
-      ++ lib.optional withScala "vim.g.scala_support=${toNum withScala}"
-      ++ lib.optional withMarkdown "vim.g.markdown_support=${toNum withMarkdown}");
-
-  bootstrap = writeText "bootstrap.lua" ''
+  preInit = ''
+    -- Globals
+    vim.g.is_nix_package = 1
+  '' + lib.optionalString withLua ''
+    vim.g.lua_support = 1
+  '' + lib.optionalString withNix ''
+    vim.g.nix_support = 1
+  '' + lib.optionalString withBash ''
+    vim.g.bash_support = 1
+  '' + lib.optionalString withScala ''
+    vim.g.scala_support = 1
+  '' + lib.optionalString withMarkdown ''
+    vim.g.markdown_support = 1
+  '' + lib.optionalString (parsers != [ ]) ''
+    -- Add TS parsers to 'runtimepath'
+    vim.opt.runtimepath:prepend '${symlinkJoin { name = "nvim-ts-parsers"; paths = parsers; }}'
+  '' + lib.optionalString (repo != null) ''
+    -- Bootstrap cfg
     local repo = '${repo}'
     local cfg_path = vim.fn.stdpath 'config'
 
@@ -138,10 +145,9 @@ let
       };
     in
     cfg // {
-      wrapperArgs = cfg.wrapperArgs ++ [ "--add-flags" ''--cmd "lua ${globals}"'' ]
-      ++ lib.optionals (binPath != "") [ "--suffix" "PATH" ":" binPath ]
-      ++ lib.optionals (parsers != "") [ "--add-flags" ''--cmd "set rtp^=${parsers}"'' ]
-      ++ lib.optionals (repo != null) [ "--add-flags" ''--cmd "luafile ${bootstrap}"'' ];
+      wrapperArgs = cfg.wrapperArgs
+      ++ [ "--suffix" "PATH" ":" binPath ]
+      ++ [ "--add-flags" ''--cmd "luafile ${writeText "pre_init.lua" preInit}"'' ];
     };
 in
 wrapNeovimUnstable neovim-unwrapped config

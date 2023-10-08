@@ -1,15 +1,19 @@
 Load('nvim-treesitter.configs').setup {
   ensure_installed = {
+    'bash',
     'fish',
+    'lua',
     'nix',
+    'vim',
     'go',
+    'c',
     'rust',
     'scala',
     'starlark',
 
     'css',
-    'yuck',
     'yaml',
+    'markdown',
     'markdown_inline',
     'dockerfile',
   },

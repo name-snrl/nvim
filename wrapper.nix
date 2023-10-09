@@ -79,21 +79,22 @@ let
 
   binPath = lib.makeBinPath (
     [ git ]
-    ++ extraBinPath
     ++ lib.optionals withLua luaBins
     ++ lib.optionals withNix nixBins
     ++ lib.optionals withBash bashBins
     ++ lib.optionals withScala scalaBins
     ++ lib.optionals withMarkdown markdownBins
+    ++ extraBinPath
   );
 
   parsers = with vimPlugins.nvim-treesitter-parsers;
-    extraTSParsers
-    ++ lib.optionals withLua [ lua luap luadoc ]
+    lib.optionals withLua [ lua luap luadoc ]
     ++ lib.optional withNix nix
     ++ lib.optional withBash bash
     ++ lib.optional withScala scala
-    ++ lib.optionals withMarkdown [ markdown markdown_inline ];
+    ++ lib.optionals withMarkdown [ markdown markdown_inline ]
+    ++ extraTSParsers
+  ;
 
   preInit = ''
     -- Globals

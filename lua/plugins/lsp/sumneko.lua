@@ -4,9 +4,6 @@ Load('lspconfig').lua_ls.setup {
       runtime = {
         version = 'LuaJIT',
       },
-      diagnostics = {
-        globals = { 'vim', 'nvimpager', 'mp' },
-      },
       workspace = {
         library = {
           vim.env.VIMRUNTIME .. '/lua',

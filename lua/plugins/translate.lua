@@ -1,5 +1,5 @@
 Load('core.utils').set_g {
-  deepl_api_auth_key = vim.fn.readfile('/home/name_snrl/.config/nvim/deepl_key')[1],
+  deepl_api_auth_key = vim.fn.readfile(vim.fn.stdpath 'config' .. '/deepl_key')[1],
 }
 Load('translate').setup {
   default = {

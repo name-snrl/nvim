@@ -124,7 +124,15 @@ let
     if vim.loop.fs_stat(cfg_path) then
       if
         vim
-          .system({ 'git', '-C', cfg_path, 'remote', 'get-url', 'origin' })
+          .system({
+            'env',
+            '-i',
+            'HOME="$HOME"',
+            'bash',
+            '-l',
+            '-c',
+            'git -C ' .. vim.fn.stdpath 'config' .. ' remote get-url origin',
+          })
           :wait().stdout
           :find(repo, 1, true)
       then

@@ -108,7 +108,7 @@ Load('lazy').setup {
 
   -- Navigation
   {
-    'ThePrimeagen/harpoon',
+    'name-snrl/harpoon',
     config = function()
       Load('harpoon').setup()
     end,

@@ -136,8 +136,10 @@ Load('core.utils').set_maps {
     { '<C-j>', utils.prev_buf_arg },
     { '<C-k>', utils.next_buf_arg },
     { '<C-_>', '<C-^>' }, -- swap to alternate
+    { '<C-/>', '<C-^>' }, -- repeat for foot
     { '<C-w>/', '<Cmd>vsp #<CR>' }, -- alternate to a split window
     { '<C-w><C-_>', '<Cmd>tab split #<CR>' }, -- alternate to a new tab
+    { '<C-w><C-/>', '<Cmd>tab split #<CR>' }, -- repeat for foot
     { '<C-w>f', '<Cmd>vsp <cfile><CR>' }, -- the same as the default, but in the vertical split
 
     -- Windows managment

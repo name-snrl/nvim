@@ -1,4 +1,5 @@
 { lib
+, stdenv
 , writeText
 , symlinkJoin
 , neovimUtils
@@ -161,6 +162,7 @@ let
     in
     cfg // {
       wrapperArgs = cfg.wrapperArgs
+      ++ [ "--set" "SHELL" "${stdenv.shell}" ]
       ++ [ "--suffix" "PATH" ":" binPath ]
       ++ [ "--add-flags" ''--cmd "luafile ${writeText "pre_init.lua" preInit}"'' ];
     };

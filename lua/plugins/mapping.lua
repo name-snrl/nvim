@@ -1,17 +1,17 @@
 local tel_built = Load 'telescope.builtin'
 local tel = Load 'telescope'
-local hr_ui = Load 'harpoon.ui'
+local hr = Load 'harpoon'
 local toggle_or_jump = function()
   if vim.v.count == 0 then
-    hr_ui.toggle_quick_menu()
+    hr.ui:toggle_quick_menu(hr:list())
   else
-    hr_ui.nav_file(vim.v.count)
+    hr:list():select(vim.v.count)
   end
 end
 
 Load('core.utils').set_maps {
   [{ 'n', 'x' }] = {
-    { 'mn', Load('harpoon.mark').add_file },
+    { 'mn', function() hr:list():append() end },
     { 'gw', toggle_or_jump },
 
     { '<Leader>z', tel.extensions.zoxide.list },

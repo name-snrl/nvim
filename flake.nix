@@ -1,6 +1,16 @@
 {
   description = "Overlay containing a wrapper around pkgs.neovim-unwrapped";
-  outputs = _: {
+
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    flake-utils.url = "github:numtide/flake-utils";
+    nvim-nightly = {
+      url = "github:neovim/neovim?dir=contrib";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+  };
+
+  outputs = { self, nixpkgs, flake-utils, nvim-nightly }: {
     overlays.default = final: prev:
       let
         repo = "https://github.com/name-snrl/nvim";
@@ -62,5 +72,20 @@
           inherit extraTSParsers;
         };
       };
-  };
+  } //
+  flake-utils.lib.eachDefaultSystem (system: with import nixpkgs
+    {
+      inherit system;
+      overlays = [
+        self.overlays.default
+        (final: prev: {
+          neovim-unwrapped = nvim-nightly.packages.${final.system}.neovim;
+        })
+      ];
+    };
+  {
+    devShells.default = mkShellNoCC {
+      packages = [ nvim-full ];
+    };
+  });
 }

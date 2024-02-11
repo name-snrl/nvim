@@ -89,7 +89,8 @@ let
   );
 
   parsers = with vimPlugins.nvim-treesitter-parsers;
-    lib.optionals withLua [ lua luap luadoc ]
+    [ c lua vim vimdoc query ]
+    ++ lib.optionals withLua [ luap luadoc ]
     ++ lib.optional withNix nix
     ++ lib.optional withBash bash
     ++ lib.optional withScala scala
@@ -166,5 +167,6 @@ let
       ++ [ "--suffix" "PATH" ":" binPath ]
       ++ [ "--add-flags" ''--cmd "luafile ${writeText "pre_init.lua" preInit}"'' ];
     };
+  nvim = neovim-unwrapped.override { treesitter-parsers = { }; };
 in
-wrapNeovimUnstable neovim-unwrapped config
+wrapNeovimUnstable nvim config

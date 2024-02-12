@@ -88,12 +88,10 @@ let
   );
 
   parsers = with vimPlugins.nvim-treesitter-parsers;
-    [ c lua vim vimdoc query ]
+    [ c lua vim vimdoc query python bash markdown markdown_inline ]
     ++ lib.optionals withLua [ luap luadoc ]
     ++ lib.optional withNix nix
-    ++ lib.optional withBash bash
     ++ lib.optional withScala scala
-    ++ lib.optionals withMarkdown [ markdown markdown_inline ]
     ++ extraTSParsers
   ;
 

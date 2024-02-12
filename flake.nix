@@ -30,7 +30,6 @@
             c
             rust
             starlark
-            yuck
             css
             yaml
             dockerfile

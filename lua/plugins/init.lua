@@ -191,12 +191,6 @@ Load('lazy').setup {
       Load 'plugins.mkdnflow'
     end,
   },
-  {
-    'elkowar/yuck.vim',
-    config = function()
-      Load 'plugins.yuck'
-    end,
-  },
   -- related:
   -- https://github.com/neovim/neovim/issues/3344
   -- https://github.com/neovim/neovim/issues/20672

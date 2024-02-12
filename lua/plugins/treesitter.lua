@@ -14,7 +14,6 @@ Load('nvim-treesitter.configs').setup {
       'rust',
       'scala',
       'starlark',
-      'yuck',
 
       'css',
       'yaml',

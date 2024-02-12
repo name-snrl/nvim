@@ -1,6 +1,5 @@
 {
   "Comment.nvim": { "branch": "master", "commit": "0236521ea582747b58869cb72f70ccfa967d2e89" },
-  "FTerm.nvim": { "branch": "master", "commit": "d1320892cc2ebab472935242d9d992a2c9570180" },
   "bufdelete.nvim": { "branch": "master", "commit": "0b9c0f182b09c51170bb9f252f15de7695e4d507" },
   "fidget.nvim": { "branch": "main", "commit": "0ba1e16d07627532b6cae915cc992ecac249fb97" },
   "harpoon": { "branch": "harpoon2", "commit": "2d3abde3c4db4981294f9405ca11e3156ae78323" },

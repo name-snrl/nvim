@@ -87,12 +87,4 @@ Load('core.utils').set_maps {
   [{ 'n', 'x', 'i', 't' }] = {
     { '<C-\\>c', '<Cmd>ColorizerToggle<CR>' },
   },
-
-  [{ 'n', 't' }] = {
-    { '<C-\\>t', Load('FTerm').toggle },
-  },
-
-  [{ 'i', 'x' }] = {
-    { '<C-\\>t', '<Esc><Cmd>lua Load("FTerm").toggle()<CR>' },
-  },
 }

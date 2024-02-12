@@ -20,15 +20,6 @@ Load('lazy').setup {
   'kyazdani42/nvim-web-devicons',
   'tpope/vim-repeat',
 
-  -- Terminal
-  {
-    'numToStr/FTerm.nvim', --simple float term
-    config = function()
-      Load 'plugins.FTerm'
-    end,
-  },
-  --use 'akinsho/toggleterm.nvim' --more complex terminal
-
   -- LSP
   {
     'neovim/nvim-lspconfig',

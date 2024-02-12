@@ -191,13 +191,4 @@ Load('lazy').setup {
       Load 'plugins.mkdnflow'
     end,
   },
-  -- related:
-  -- https://github.com/neovim/neovim/issues/3344
-  -- https://github.com/neovim/neovim/issues/20672
-  {
-    'ojroques/nvim-osc52',
-    config = function()
-      Load 'plugins.ssh_clipboard'
-    end,
-  },
 }

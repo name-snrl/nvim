@@ -10,7 +10,6 @@ M.mapping = function(bufnr)
     n = {
       { 'gD', vim.lsp.buf.declaration },
       { 'gd', telescope.lsp_definitions },
-      { 'K', vim.lsp.buf.hover },
       { 'gi', telescope.lsp_implementations },
       --{ '<C-k>', vim.lsp.buf.signature_help },
       --{ '<Leader>wa', vim.lsp.buf.add_workspace_folder },

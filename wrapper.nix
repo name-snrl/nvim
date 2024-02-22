@@ -50,6 +50,11 @@
   # At startup, Nvim checks if this repo is a user config,
   # and load it if it is not
 , repo ? null
+  # The bundled parsers may be out of date for nvim-treesitter,
+  # causing errors if nvim-treesitter parsers have not been installed.
+  # 
+  # !!! REQUIRES PACKAGE REBUILD !!!
+, removeBundledParsers ? false
 , extraBinPath ? [ ]
 , extraTSParsers ? [ ]
 }:
@@ -163,6 +168,9 @@ let
       ++ [ "--suffix" "PATH" ":" binPath ]
       ++ [ "--add-flags" ''--cmd "luafile ${writeText "pre_init.lua" preInit}"'' ];
     };
-  nvim = neovim-unwrapped.override { treesitter-parsers = { }; };
+  nvim =
+    if removeBundledParsers
+    then neovim-unwrapped.override { treesitter-parsers = { }; }
+    else neovim-unwrapped;
 in
 wrapNeovimUnstable nvim config

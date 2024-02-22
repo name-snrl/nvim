@@ -14,6 +14,7 @@
     overlays.default = final: prev:
       let
         repo = "https://github.com/name-snrl/nvim";
+        removeBundledParsers = true;
         extraBinPath = with final; [
           gnumake # for required telescope-fzf-native.nvim
           gcc # for required telescope-fzf-native.nvim
@@ -40,6 +41,7 @@
           extraName = "-vanila";
           viAlias = true;
           inherit repo;
+          inherit removeBundledParsers;
           inherit extraBinPath;
         };
 
@@ -51,6 +53,7 @@
           withNix = true;
           withBash = true;
           inherit repo;
+          inherit removeBundledParsers;
           inherit extraBinPath;
           inherit extraTSParsers;
         };
@@ -65,6 +68,7 @@
           withScala = true;
           withMarkdown = true;
           inherit repo;
+          inherit removeBundledParsers;
           inherit extraBinPath;
           inherit extraTSParsers;
         };

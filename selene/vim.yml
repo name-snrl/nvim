@@ -1,0 +1,5 @@
+---
+name: vim
+globals:
+  vim:
+    any: true

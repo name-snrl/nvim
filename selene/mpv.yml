@@ -1,0 +1,5 @@
+---
+name: mpv
+globals:
+  mp:
+    any: true

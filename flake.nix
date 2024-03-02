@@ -18,19 +18,14 @@
   outputs =
     inputs@{ flake-parts, ... }:
     flake-parts.lib.mkFlake { inherit inputs; } (
-      { inputs, ... }:
+      { lib, inputs, ... }:
       {
         imports = with inputs; [
           flake-parts.flakeModules.easyOverlay
           pre-commit-hooks-nix.flakeModule
           treefmt-nix.flakeModule
         ];
-        systems = [
-          "x86_64-linux"
-          "aarch64-linux"
-          "x86_64-darwin"
-          "aarch64-darwin"
-        ];
+        systems = lib.systems.flakeExposed;
         perSystem =
           { config, pkgs, ... }:
           let

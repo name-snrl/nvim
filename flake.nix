@@ -37,6 +37,7 @@
           {
             packages = {
               inherit nvim selene-wrapped;
+              default = nvim;
             };
             overlayAttrs = {
               inherit nvim selene-wrapped;

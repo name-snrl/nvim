@@ -1,6 +1,6 @@
 -- Sources config files.
 -- Yes, without using require(). We don't need to cache config modules
-vim.cmd.runtime { cmd = 'cfg_modules/**/*.lua', bang = true }
+vim.cmd.runtime { args = { 'cfg_modules/**/*.lua' }, bang = true }
 
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'

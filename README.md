@@ -1,11 +1,11 @@
-## Introduce
+# Introduce
 
 The KISS-based configuration that maximizes the use of Neovim's built-in
 functionality.
 
-## How my configuration might be useful to you?
+# How my configuration might be useful to you?
 
-### Fuck status lines. Current branch/commit in `:h 'ruler'`
+## Fuck status lines. Current branch/commit in `:h 'ruler'`
 
 I don't like all those overloaded status lines, so I just wrote this simple
 branch/commit tracker for use in options like `:h 'rulerformat'`.
@@ -24,7 +24,7 @@ vim.opt.winbar = '%#Normal# %<%=%(%* %y%f%m%r%) '
 I use it with a plugin like `SmiteshP/nvim-navic` to get the context on the left
 side of the winbar and the file name on the right.
 
-### [Nix](https://github.com/NixOS/nix) overlay/wrapper for configuring package content
+## [Nix](https://github.com/NixOS/nix) overlay/wrapper for configuring package content
 
 Did he write another way to configure Neovim with nix?
 
@@ -68,7 +68,7 @@ allows you to configure the following aspects:
 - Add additional arguments to
   [makeWrapper](https://github.com/NixOS/nixpkgs/blob/master/pkgs/build-support/setup-hooks/make-wrapper.sh).
 
-#### What is `pre-init.lua`?
+### What is `pre-init.lua`?
 
 This is a Lua file that is executed with the command
 `--cmd "luafile pre-init.lua"`, which means that it is executed before any vimrc
@@ -85,7 +85,7 @@ is processed. It consists of:
   repository from the specified URL. See the `repo` argument below.
 - Any additional Lua code you specify with `additionalPreInit`.
 
-#### Arguments for override
+### Arguments for override
 
 Arguments that are simply passed to `neovimUtils.makeNeovimConfig`.
 [Source](https://github.com/NixOS/nixpkgs/blob/7b9f4b6febde110cbe247ec71ec76da14b5c48ca/pkgs/applications/editors/neovim/utils.nix#L27-L123):
@@ -147,7 +147,7 @@ https://github.com/nvim-treesitter/nvim-treesitter/issues/5873
 
 `:h treesitter-parsers` to get list of the bundled parsers
 
-#### Usage example
+### Usage example
 
 ```nix
 # flake.nix
@@ -203,17 +203,17 @@ https://github.com/nvim-treesitter/nvim-treesitter/issues/5873
 }
 ```
 
-#### Bonus: [selene](https://github.com/Kampfkarren/selene)-wrapped
+### Bonus: [selene](https://github.com/Kampfkarren/selene)-wrapped
 
 Overlay also provides a wrapped selene binary that runs with the `--config`
 flag. The configuration can be found [here](/selene).
 
-## Plugins I use
+# Plugins I use
 
 - git integration
   - [vim-fugitive](https://github.com/tpope/vim-fugitive)
 
-## TODO
+# TODO
 
 - [ ] git integration
   - [ ] `tpope/vim-fugitive`

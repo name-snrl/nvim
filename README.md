@@ -59,8 +59,8 @@ Unlike the solutions I know:
 - [neovim-flake](https://github.com/jordanisaacs/neovim-flake)
 
 My overlay does not involve configuring Neovim with Nix. Instead, it enables you
-to wrap the Neovim package using the standard wrapper provided in nixpkgs. This
-allows you to configure the following aspects:
+to wrap the standard `neovim-unwrapped` package using the standard wrapper
+provided in nixpkgs. This allows you to configure the following aspects:
 
 - Add packages to `$PATH`, specifically for Neovim.
 - Add Tree-sitter parsers via package rebuild or `:h 'rtp'` option.

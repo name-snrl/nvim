@@ -68,6 +68,25 @@ provided in nixpkgs. This allows you to configure the following aspects:
 - Add additional arguments to
   [makeWrapper](https://github.com/NixOS/nixpkgs/blob/master/pkgs/build-support/setup-hooks/make-wrapper.sh).
 
+Note. Here is a list of nvim-treesitter parsers that will be added anyway:
+
+- c
+- lua
+- vim
+- vimdoc
+- query
+- python
+- bash
+- markdown
+- markdown_inline
+
+The reason is that the bundled Neovim parsers may be out of date for
+nvim-treesitter and cause errors.
+
+https://github.com/nvim-treesitter/nvim-treesitter/issues/5873
+
+`:h treesitter-parsers` to get list of the bundled parsers
+
 ### What is `pre-init.lua`?
 
 This is a Lua file that is executed with the command
@@ -127,23 +146,6 @@ Additional arguments, that implemented inside `wrapper.nix`:
   `neovim-unwrapped` derivation. Rebuild is the more general and recommended
   approach, so if you are using the nightly version and already rebuild
   `neovim-unwrapped`, it is recommended to enable this option.
-
-Note. Here is a list of nvim-treesitter parsers that will be added anyway:
-
-- c
-- lua
-- vim
-- vimdoc
-- query
-- python
-- bash
-- markdown
-- markdown_inline
-
-The reason is that the bundled Neovim parsers may be out of date for
-nvim-treesitter and cause errors.
-
-https://github.com/nvim-treesitter/nvim-treesitter/issues/5873
 
 `:h treesitter-parsers` to get list of the bundled parsers
 

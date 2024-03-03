@@ -5,25 +5,6 @@ functionality.
 
 # How my configuration might be useful to you?
 
-## Fuck status lines. Current branch/commit in `:h 'ruler'`
-
-I don't like all those overloaded status lines, so I just wrote this simple
-branch/commit tracker for use in options like `:h 'rulerformat'`.
-
-If you want the same copy [ruler.lua](/cfg_modules/core/ruler.lua) to your
-config and configure the options according to your preferences at the bottom of
-the file. By default it will look like a standard ruler, but with branch/commit
-displayed, and will also disable the status bar.
-
-Yes, now you can't see file names, you can use `:h 'winbar'` for that:
-
-```lua
-vim.opt.winbar = '%#Normal# %<%=%(%* %y%f%m%r%) '
-```
-
-I use it with a plugin like `SmiteshP/nvim-navic` to get the context on the left
-side of the winbar and the file name on the right.
-
 ## [Nix](https://github.com/NixOS/nix) overlay/wrapper for configuring package content
 
 Did he write another way to configure Neovim with nix?

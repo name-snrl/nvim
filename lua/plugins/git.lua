@@ -1,5 +1,20 @@
 -- selene: allow(mixed_table)
 return {
   'tpope/vim-fugitive',
-  event = 'VeryLazy',
+  lazy = false,
+  config = function()
+    -- selene: allow(global_usage)
+    _G.git_head = function()
+      local head = vim.fn.FugitiveHead(7)
+      if head == '' then
+        return ' '
+      elseif head:len() >= 14 then
+        return ' ' .. head:sub(1, 14) .. '…'
+      else
+        return ' ' .. head
+      end
+    end
+    vim.opt.rulerformat = '%35(%-17{v:lua.git_head()} %-13(%l,%c%V%) %P%)'
+    vim.opt.laststatus = 0
+  end,
 }

@@ -231,11 +231,6 @@ Additional arguments, that implemented inside `wrapper.nix`:
 }
 ```
 
-### Bonus: [selene](https://github.com/Kampfkarren/selene)-wrapped
-
-Overlay also provides a wrapped selene binary that runs with the `--config`
-flag. The configuration can be found [here](/selene).
-
 ### FAQ
 
 #### What wrapping is?

@@ -39,9 +39,6 @@
           }:
           let
             nvim = pkgs.callPackage ./wrapper.nix { };
-            selene-wrapped = pkgs.writeShellScriptBin "selene" ''
-              exec ${pkgs.selene}/bin/selene --config ${./selene}/selene.toml "$@"
-            '';
             overrides = {
               repo = "https://github.com/name-snrl/nvim";
               viAlias = true;
@@ -68,7 +65,7 @@
               inherit test-nightly test-stable;
             };
             overlayAttrs = {
-              inherit nvim selene-wrapped;
+              inherit nvim;
             };
 
             treefmt = {
@@ -101,7 +98,7 @@
                   enable = true;
                   name = "selene";
                   description = "An opinionated Lua code linter";
-                  entry = "${selene-wrapped}/bin/selene";
+                  entry = "${pkgs.selene}/bin/selene --config ${./selene}/selene.toml";
                   types = [ "lua" ];
                 };
               };

@@ -210,6 +210,40 @@ Additional arguments, that implemented inside `wrapper.nix`:
 Overlay also provides a wrapped selene binary that runs with the `--config`
 flag. The configuration can be found [here](/selene).
 
+### FAQ
+
+#### What wrapping is?
+
+This is creating a small bash script around the package to create its own
+environment. As you may have noticed, nixpkgs has many packages with the suffix
+`-unwrapped`, which means that it is a standardly built package with standard
+output. But sometimes a wrapper is created for a package to work properly in
+NixOS or to customize it through a module, so wrapped packages are hidden under
+their normal names. What does a wrapper look like? Execute:
+
+```bash
+nvim "$(realpath "$(which nvim)")"
+```
+
+#### Is this causing Neovim to be rebuilt?
+
+No, unless the `rebuildWithTSParsers` option is enabled. By default, this just
+builds a thin bash wrapper around the `neovim-unwrapped` package.
+
+#### How do I change the package that will be wrapped?
+
+By default, the overlay uses your system's `neovim-unwrapped` package from the
+`final` argument, which means that if you use
+[neovim-nightly](https://github.com/nix-community/neovim-nightly-overlay), which
+overrides the `neovim-unwrapped` package, you don't need to do anything. Or you
+can specify the package manually via override:
+
+```nix
+final: prev: {
+  my-nvim = final.nvim.override { neovim-unwrapped = prev.neovim-i-want-wrap; }
+}
+```
+
 # Plugins I use
 
 - git integration

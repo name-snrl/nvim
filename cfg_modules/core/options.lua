@@ -1,7 +1,11 @@
 for option_name, value in pairs {
   mouse = '',
-  clipboard = 'unnamedplus',
   timeout = false,
+  clipboard = 'unnamedplus',
+  -- this is for comments only, because there is no longer `t` in
+  -- 'formatoptions'
+  textwidth = 80,
+  formatoptions = 'cqjrol',
 
   -- appearance
   cursorline = true,

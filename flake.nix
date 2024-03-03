@@ -3,6 +3,10 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nvim-nightly = {
+      url = "github:neovim/neovim?dir=contrib";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     flake-parts.url = "github:hercules-ci/flake-parts";
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
@@ -27,17 +31,41 @@
         ];
         systems = lib.systems.flakeExposed;
         perSystem =
-          { config, pkgs, ... }:
+          {
+            config,
+            pkgs,
+            system,
+            ...
+          }:
           let
             nvim = pkgs.callPackage ./wrapper.nix { };
             selene-wrapped = pkgs.writeShellScriptBin "selene" ''
               exec ${pkgs.selene}/bin/selene --config ${./selene}/selene.toml "$@"
             '';
+            overrides = {
+              repo = "https://github.com/name-snrl/nvim";
+              viAlias = true;
+              withPython3 = true;
+              extraBinPath = [ pkgs.deadnix ];
+              extraTSParsers = with pkgs.vimPlugins.nvim-treesitter-parsers; [
+                fish
+                scala
+                starlark
+              ];
+            };
+            test-nightly = nvim.override (
+              overrides
+              // {
+                extraName = "-test-nightly";
+                rebuildWithTSParsers = true;
+                neovim-unwrapped = inputs.nvim-nightly.packages.${system}.neovim;
+              }
+            );
+            test-stable = nvim.override (overrides // { extraName = "-test-stable"; });
           in
           {
             packages = {
-              inherit nvim selene-wrapped;
-              default = nvim;
+              inherit test-nightly test-stable;
             };
             overlayAttrs = {
               inherit nvim selene-wrapped;
@@ -90,9 +118,18 @@
                       nix flake update \
                           --commit-lock-file \
                           --inputs-from self \
-                          --override-input nixpkgs nixpkgs &&
+                          --override-input nixpkgs nixpkgs \
+                          --override-input nvim-nightly 'flake:nvim-nightly?dir=contrib' &&
                           direnv reload
                     '';
+                  })
+                  (writeShellApplication {
+                    name = "nightly";
+                    text = "nix shell .#test-nightly";
+                  })
+                  (writeShellApplication {
+                    name = "stable";
+                    text = "nix shell .#test-stable";
                   })
                 ];
                 shellHook = config.pre-commit.installationScript;

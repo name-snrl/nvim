@@ -224,7 +224,7 @@ flag. The configuration can be found [here](/selene).
   - [ ] a tool to manage working trees, maybe `telescope` is all we need
   - [ ] easy way to clone a repo to /tmp followed by timeline-based exploration
   - [ ] `octo.nvim`/`tpope/vim-rhubarb`
-  - [ ] branch/commit switching, `telescope`?
+  - [ ] branch/commit switching, `telescope`? yeah, `git_bcomits` looks so cool!
   - [ ] making fixups, `telescope`?
   - [ ] stash management, `telescope`?
   - [ ] working tree jumping, `telescope`?
@@ -265,11 +265,14 @@ flag. The configuration can be found [here](/selene).
     nvim-treesitter any more.
   - [ ] indent?
   - [ ] code navigation through `telescope`
-- [ ] code context and breadcrumbs with one of:
+- [ ] code context and breadcrumbs/outline can use `gO` mapping for oppening
+  outline buffer, it makes same by default:
   - `SmiteshP/nvim-navic` and `SmiteshP/nvim-navbuddy` (only LSP). want the same
     but through treesitter
   - `nvimdev/lspsaga` outline
   - `stevearc/aerial.nvim`
+  - `hedyhli/outline.nvim`
+  - `Bekaboo/dropbar.nvim`
 - [ ] `LSP`
   - [ ] `nvimdev/lspsaga`
   - [ ] `folke/trouble.nvim`

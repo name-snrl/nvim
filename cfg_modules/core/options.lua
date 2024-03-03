@@ -10,6 +10,10 @@ for option_name, value in pairs {
   listchars = 'tab:▸ ',
   linebreak = true,
 
+  -- folding
+  foldmethod = 'expr',
+  foldexpr = 'v:lua.vim.treesitter.foldexpr()',
+
   -- ins-completion
   pumheight = 10,
   completeopt = 'menu,menuone,longest,noselect',

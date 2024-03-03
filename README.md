@@ -248,6 +248,7 @@ final: prev: {
 
 - git integration
   - [vim-fugitive](https://github.com/tpope/vim-fugitive)
+- [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
 
 # TODO
 
@@ -295,8 +296,9 @@ final: prev: {
   - [ ] a new line within a pair
   - [ ] default pairs
 - [ ] `tree-sitter`
-  - [ ] highlight using `vim.treesitter.start()`, looks like we no need
-    nvim-treesitter any more.
+  - [x] highlighting using `vim.treesitter.start()`, looks like we don't need
+    nvim-treesitter anymore. we still need `nvim-treesitter` because it contains
+    queries for highlighting and everything else.
   - [ ] indent?
   - [ ] code navigation through `telescope`
 - [ ] code context and breadcrumbs/outline can use `gO` mapping for oppening

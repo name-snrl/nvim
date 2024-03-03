@@ -109,45 +109,45 @@ is processed. It consists of:
 Arguments that are simply passed to `neovimUtils.makeNeovimConfig`.
 [Source](https://github.com/NixOS/nixpkgs/blob/7b9f4b6febde110cbe247ec71ec76da14b5c48ca/pkgs/applications/editors/neovim/utils.nix#L27-L123):
 
-- `extraName`, **string**. The suffix to be added to the name attribute in the
-  derivation.
-- `viAlias`, **bool**. Similar to the `programs.neovim.viAlias` option in NixOS.
-- `vimAlias`, **bool**. Similar to the `programs.neovim.vimAlias` option in
-  NixOS.
-- `withPython3`, **bool**. Similar to the `programs.neovim.withPython3` option
-  in NixOS.
-- `withNodeJs`, **bool**. Similar to the `programs.neovim.withNodeJs` option in
-  NixOS.
-- `withRuby`, **bool**. Similar to the `programs.neovim.withRuby` option in
-  NixOS.
-- `withPerl`, **bool**. Similar to the above options enable the Perl provider.
-  But this is still an experimental option, be careful.
-- `extraPython3Packages`. A function that you normally pass in
-  `python.withPackages`, but which is passed to the python provider Neovim.
-- `extraLuaPackages`. Similar to the above.
+- `extraName`, **string**, default: `""`. The suffix to be added to the name
+  attribute in the derivation.
+- `viAlias`, **bool**, default: `false`. Similar to the
+  `programs.neovim.viAlias` option in NixOS.
+- `vimAlias`, **bool**, default: `false`. Similar to the
+  `programs.neovim.vimAlias` option in NixOS.
+- `withPython3`, **bool**, default: `false`. Similar to the
+  `programs.neovim.withPython3` option in NixOS.
+- `withNodeJs`, **bool**, default: `false`. Similar to the
+  `programs.neovim.withNodeJs` option in NixOS.
+- `withRuby`, **bool**, default: `false`. Similar to the
+  `programs.neovim.withRuby` option in NixOS.
+- `withPerl`, **bool**, default: `false`. Similar to the above options enable
+  the Perl provider. But this is still an experimental option, be careful.
+- `extraPython3Packages`, default: `_: [ ]`. A function that you normally pass
+  in `python.withPackages`, but which is passed to the python provider Neovim.
+- `extraLuaPackages`, default: `_: [ ]`. Similar to the above.
 
 Additional arguments, that implemented inside `wrapper.nix`:
 
-- `repo`, **string or null**. On startup, Nvim will check if the specified
-  repository is a user configuration, and load it if it is not. If some
-  configuration already exists but is not the specified repository, it will be
-  renamed with the prefix "\_backup\_{current date}". The
+- `repo`, **string or null**, default: `null`. On startup, Nvim will check if
+  the specified repository is a user configuration, and load it if it is not. If
+  some configuration already exists but is not the specified repository, it will
+  be renamed with the prefix "\_backup\_{current date}". The
   `git remote get-url origin` command is used for verification.
-- `additionalPreInit`, **string**. Any Lua code you want to add to
-  `pre-init.lua`. Be careful, it will be executed every time you open Neovim.
-- `additionalWrapperArgs`, **list of string**. As mentioned above, using this
-  option you can add arguments to makeWrapper.
-- `extraBinPath`, **list of package**. Packages to be added to `$PATH`.
-- `extraTSParsers`, **package list**. Tree parsers to be added to 'rtp' and to
-  the `nix_ts_parsers` global variable or to `$out/lib/nvim/parser/` if
-  `rebuildWithTSParsers` is enabled.
-- `rebuildWithTSParsers`, **bool**. Whether Tree-sitter parsers should be added
-  via the 'runtimepath' option or by overriding the `preConfigure` phase in the
-  `neovim-unwrapped` derivation. Rebuild is the more general and recommended
-  approach, so if you are using the nightly version and already rebuild
-  `neovim-unwrapped`, it is recommended to enable this option.
-
-`:h treesitter-parsers` to get list of the bundled parsers
+- `additionalPreInit`, **string**, default: `""`. Any Lua code you want to add
+  to `pre-init.lua`. Be careful, it will be executed every time you open Neovim.
+- `additionalWrapperArgs`, **list of string**, default: `[ ]`. As mentioned
+  above, using this option you can add arguments to makeWrapper.
+- `extraBinPath`, **list of package**, default: `[ ]`. Packages to be added to
+  `$PATH`.
+- `extraTSParsers`, **package list**, default: `[ ]`. Tree parsers to be added
+  to 'rtp' and to the `nix_ts_parsers` global variable or to
+  `$out/lib/nvim/parser/` if `rebuildWithTSParsers` is enabled.
+- `rebuildWithTSParsers`, **bool**, default: `false`. Whether Tree-sitter
+  parsers should be added via the 'runtimepath' option or by overriding the
+  `preConfigure` phase in the `neovim-unwrapped` derivation. Rebuild is the more
+  general and recommended approach, so if you are using the nightly version and
+  already rebuild `neovim-unwrapped`, it is recommended to enable this option.
 
 ### Usage example
 

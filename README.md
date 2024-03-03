@@ -151,6 +151,8 @@ Additional arguments, that implemented inside `wrapper.nix`:
 
 ### Usage example
 
+#### If you use flakes
+
 ```nix
 # flake.nix
 {
@@ -196,6 +198,30 @@ Additional arguments, that implemented inside `wrapper.nix`:
           dockerfile
         ];
       };
+    })
+  ];
+  # add it to environment.systemPackages or wherever you want
+  environment.systemPackages = with pkgs; [
+    my-nvim
+  ];
+}
+```
+
+#### If you use channels
+
+```nix
+{ pkgs, ... }: {
+  nixpkgs.overlays = [
+    (final: prev: {
+      my-nvim =
+        let
+          nvim-overlay = builtins.fetchTarball {
+            url = "https://github.com/name-snrl/nvim/archive/from-scratch.tar.gz";
+          };
+        in
+        final.callPackage "${nvim-overlay}/wrapper.nix" {
+          # your overrides here
+        };
     })
   ];
   # add it to environment.systemPackages or wherever you want

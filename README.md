@@ -253,6 +253,9 @@ final: prev: {
 - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
 - appearance
   - colorscheme [nightfox.nvim](https://github.com/EdenEast/nightfox.nvim)
+- misc
+  - [translate.nvim](https://github.com/uga-rosa/translate.nvim)
+  - [nvim-highlight-colors](https://github.com/brenoprata10/nvim-highlight-colors)
 
 # TODO
 
@@ -368,8 +371,8 @@ final: prev: {
   - [ ] add an image of the look
 - [ ] misc
   - [ ] `folke/todo-comments.nvim`?
-  - [ ] `uga-rosa/translate.nvim`
-  - [ ] `NvChad/nvim-colorizer.lua`
+  - [x] `uga-rosa/translate.nvim`
+  - [x] `brenoprata10/nvim-highlight-colors`
   - [ ] `tpope/vim-repeat`
 - [ ] `DAP`
   - <https://www.youtube.com/watch?v=5KQK2id3JtI>

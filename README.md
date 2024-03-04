@@ -251,6 +251,8 @@ final: prev: {
 - git integration
   - [vim-fugitive](https://github.com/tpope/vim-fugitive)
 - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
+- appearance
+  - colorscheme [nightfox.nvim](https://github.com/EdenEast/nightfox.nvim)
 
 # TODO
 
@@ -359,7 +361,7 @@ final: prev: {
     - [ ] diagnostics
 - [ ] appearance
   - [ ] `EdenEast/nightfox.nvim`
-    - [ ] install
+    - [x] install
     - [ ] adjust lsp colors
       <https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_semanticTokens>
   - [ ] `lukas-reineke/indent-blankline.nvim`

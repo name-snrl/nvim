@@ -16,7 +16,7 @@ for option_name, value in pairs {
 
   -- folding
   foldmethod = 'expr',
-  foldexpr = 'v:lua.vim.treesitter.foldexpr()',
+  foldexpr = 'nvim_treesitter#foldexpr()',
 
   -- ins-completion
   pumheight = 10,

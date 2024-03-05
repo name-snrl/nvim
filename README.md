@@ -261,15 +261,31 @@ final: prev: {
 
 - [ ] git integration
   - [ ] `tpope/vim-fugitive`
+    - commands
+    - conflicts
+    - blame
+    - stash
   - [ ] `lewis6991/gitsigns.nvim`
-  - [ ] easy way to resolve merger conflicts
-  - [ ] a tool to manage working trees, maybe `telescope` is all we need
+    - stage/unstage in file
+  - [ ] `telescope`
+    - stage/unstage files
+    - branch/commit switching. `git_commit`/`git_bcommit`
+  - [x] easy way to resolve merger conflicts. WIP `vim-fugitive`
+  - [ ] a tool to manage working trees, maybe `telescope` is all we need, just
+    `ThePrimeagen/git-worktree.nvim`!!!!!!!
   - [ ] easy way to clone a repo to /tmp followed by timeline-based exploration
+    - clone with `vim-fugitive`, create a mapping:
+      `G clone {clipboard} /tmp/tmpdir | cd /tmp/tmpdir`
+    - explore with:
+      - `telescope`: `git_commit`/`git_bcommit`, `git_bcommits` with `-L`,
+        `git_files`
+      - `vim-fugitive`: `:G blame`, maybe `:Gclog`/`:Gllog`
   - [ ] `octo.nvim`/`tpope/vim-rhubarb`
-  - [ ] branch/commit switching, `telescope`? yeah, `git_bcomits` looks so cool!
-  - [ ] making fixups, `telescope`?
-  - [ ] stash management, `telescope`?
-  - [ ] working tree jumping, `telescope`?
+  - [x] branch/commit switching, `telescope`. WIP `telescope`
+  - [x] making fixups, `telescope`. WIP `telescope`
+  - [x] stash management, `telescope`. WIP `telescope` and `vim-fugitive`
+    - pop with `telescope`
+    - stash with `vim-fugitive`, maybe additional mappings?
 - [ ] file navigation
   - [ ] `telescope`
     - [ ] git file same for grep
@@ -306,7 +322,7 @@ final: prev: {
   - [x] highlighting using `vim.treesitter.start()`, looks like we don't need
     nvim-treesitter anymore. we still need `nvim-treesitter` because it contains
     queries for highlighting and everything else.
-  - [ ] indent?
+  - [ ] indentation? yeah, it looks better than writing in vimL..
   - [ ] code navigation through `telescope`
 - [ ] code context and breadcrumbs/outline can use `gO` mapping for oppening
   outline buffer, it makes same by default:

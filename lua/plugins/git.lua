@@ -17,4 +17,11 @@ return {
     vim.opt.rulerformat = '%35(%-17{v:lua.git_head()} %-13(%l,%c%V%) %P%)'
     vim.opt.laststatus = 0
   end,
+  keys = {
+    { 'go', '<Cmd>G | on<CR>' },
+    { 'gl', '<Cmd>vert G log --oneline<CR>' },
+    { 'g/', '<Cmd>vert G log --oneline %<CR>' },
+    { 'gM', '<Cmd>G mergetool<CR>' },
+    { 'gm', '<Cmd>Gvdiffsplit!<CR>' },
+  },
 }

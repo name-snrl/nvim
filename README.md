@@ -260,15 +260,17 @@ final: prev: {
 # TODO
 
 - [ ] git integration
-  - [ ] `tpope/vim-fugitive`
+  - [x] `tpope/vim-fugitive`
+    - selecting commits for fixup
     - commands
+    - stage/unstage files
     - conflicts
     - blame
     - stash
   - [ ] `lewis6991/gitsigns.nvim`
     - stage/unstage in file
   - [ ] `telescope`
-    - stage/unstage files
+    - quickfix for `:G mergetool`
     - branch/commit switching. `git_commit`/`git_bcommit`
   - [x] easy way to resolve merger conflicts. WIP `vim-fugitive`
   - [ ] a tool to manage working trees, maybe `telescope` is all we need, just

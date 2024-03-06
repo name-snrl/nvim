@@ -1,4 +1,5 @@
-vim.g.deepl_api_auth_key = vim.trim(vim.secure.read(vim.fn.stdpath 'config' .. '/deepl_key'))
+local _, key = pcall(vim.fn.readfile, vim.fn.stdpath 'config' .. '/deepl_key')
+vim.g.deepl_api_auth_key = key[1]
 
 -- selene: allow(mixed_table)
 return {

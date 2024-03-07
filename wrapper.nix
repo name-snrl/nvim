@@ -65,12 +65,15 @@ let
           vim.fn
             .system({
               'env',
+              '-S',
               '-i',
               'HOME="$HOME"',
-              'bash',
-              '-l',
-              '-c',
-              'git -C ' .. vim.fn.stdpath 'config' .. ' remote get-url origin',
+              '${git}/bin/git',
+              '-C',
+              vim.fn.stdpath 'config',
+              'remote',
+              'get-url',
+              'origin',
             })
             :find(repo, 1, true)
         then
@@ -79,7 +82,7 @@ let
         vim.loop.fs_rename(cfg_path, cfg_path .. '_backup_' .. os.date '%H%M%S_%d-%m-%Y')
       end
 
-      vim.fn.system({ 'git', 'clone', repo, cfg_path })
+      vim.fn.system({ '${git}/bin/git', 'clone', repo, cfg_path })
     ''
     + additionalPreInit;
 

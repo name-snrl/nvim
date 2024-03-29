@@ -37,7 +37,7 @@
           {
             config,
             pkgs,
-            system,
+            inputs',
             ...
           }:
           let
@@ -58,7 +58,7 @@
               // {
                 extraName = "-test-nightly";
                 rebuildWithTSParsers = true;
-                neovim-unwrapped = inputs.nvim-nightly.packages.${system}.neovim;
+                neovim-unwrapped = inputs'.nvim-nightly.packages.neovim;
               }
             );
             test-stable = nvim.override (overrides // { extraName = "-test-stable"; });

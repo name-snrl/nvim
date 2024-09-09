@@ -62,10 +62,22 @@
               }
             );
             test-stable = nvim.override (overrides // { extraName = "-test-stable"; });
+
+            update = pkgs.writeShellApplication {
+              name = "update";
+              text = ''
+                nix flake update \
+                    --commit-lock-file \
+                    --inputs-from self \
+                    --override-input nixpkgs nixpkgs \
+                    --override-input neovim-nightly-overlay neovim-nightly-overlay &&
+                    direnv reload
+              '';
+            };
           in
           {
             packages = {
-              inherit test-nightly test-stable;
+              inherit test-nightly test-stable update;
             };
             overlayAttrs = {
               inherit nvim;
@@ -112,17 +124,7 @@
               with pkgs;
               mkShellNoCC {
                 packages = [
-                  (writeShellApplication {
-                    name = "update";
-                    text = ''
-                      nix flake update \
-                          --commit-lock-file \
-                          --inputs-from self \
-                          --override-input nixpkgs nixpkgs \
-                          --override-input neovim-nightly-overlay neovim-nightly-overlay &&
-                          direnv reload
-                    '';
-                  })
+                  update
                   (writeShellApplication {
                     name = "nightly";
                     text = "nix shell .#test-nightly";

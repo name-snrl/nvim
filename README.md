@@ -44,29 +44,15 @@ to wrap the standard `neovim-unwrapped` package using the standard wrapper
 provided in nixpkgs. This allows you to configure the following aspects:
 
 - Add packages to `$PATH`, specifically for Neovim.
-- Add Tree-sitter parsers via package rebuild or `:h 'rtp'` option.
+- ~Add Tree-sitter parsers via package rebuild or `:h 'rtp'` option.~
 - Add additional Lua code to `pre-init.lua`.
 - Add additional arguments to
   [makeWrapper](https://github.com/NixOS/nixpkgs/blob/master/pkgs/build-support/setup-hooks/make-wrapper.sh).
 
-Note. Here is a list of nvim-treesitter parsers that will be added anyway:
-
-- c
-- lua
-- vim
-- vimdoc
-- query
-- python
-- bash
-- markdown
-- markdown_inline
-
-The reason is that the bundled Neovim parsers may be out of date for
-nvim-treesitter and cause errors.
-
-https://github.com/nvim-treesitter/nvim-treesitter/issues/5873
-
-`:h treesitter-parsers` to get list of the bundled parsers
+EDIT: Previously I also passed `nvim-treesitter-parsers` from nixpkgs, but this
+was a bad idea because the queries files from `nvim-treesitter`, which will be
+managed by the nvim plugin manager, like `lazy.nvim`, and the parsers from
+nixpkgs may not be compatible.
 
 ### What is `pre-init.lua`?
 
@@ -76,11 +62,6 @@ is processed. It consists of:
 
 - `vim.g.is_nix_package = 1`. This can be used to change the configuration based
   on whether Neovim is a package from this overlay.
-- If `rebuildWithTSParsers` is false, which is the default behavior, it adds
-  nvim-treesitter parsers to the 'runtimepath' option and sets the
-  `nix_ts_parsers` global variable that stores the path to the parsers. This
-  global variable can be used to redefine the 'runtimepath' option. So, for
-  example, by default Lazy.nvim resets the 'runtimepath' option.
 - If `repo` is not null, it also contains a snippet that checks and clones the
   repository from the specified URL. See the `repo` argument below.
 - Any additional Lua code you specify with `additionalPreInit`.
@@ -121,14 +102,6 @@ Additional arguments, that implemented inside `wrapper.nix`:
   above, using this option you can add arguments to makeWrapper.
 - `extraBinPath`, **list of package**, default: `[ ]`. Packages to be added to
   `$PATH`.
-- `extraTSParsers`, **package list**, default: `[ ]`. Tree parsers to be added
-  to 'rtp' and to the `nix_ts_parsers` global variable or to
-  `$out/lib/nvim/parser/` if `rebuildWithTSParsers` is enabled.
-- `rebuildWithTSParsers`, **bool**, default: `false`. Whether Tree-sitter
-  parsers should be added via the 'runtimepath' option or by overriding the
-  `preConfigure` phase in the `neovim-unwrapped` derivation. Rebuild is the more
-  general and recommended approach, so if you are using the nightly version and
-  already rebuild `neovim-unwrapped`, it is recommended to enable this option.
 
 ### Usage example
 
@@ -169,14 +142,6 @@ Additional arguments, that implemented inside `wrapper.nix`:
           curl
           fd
           ripgrep
-        ];
-        extraTSParsers = with final.vimPlugins.nvim-treesitter-parsers; [
-          fish
-          go
-          rust
-          css
-          yaml
-          dockerfile
         ];
       };
     })

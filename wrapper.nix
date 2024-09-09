@@ -1,9 +1,7 @@
 {
   lib,
   writeText,
-  symlinkJoin,
   neovimUtils,
-  vimPlugins,
   wrapNeovimUnstable,
   neovim-unwrapped,
   git,
@@ -20,70 +18,48 @@
   additionalPreInit ? "",
   additionalWrapperArgs ? [ ],
   extraBinPath ? [ ],
-  extraTSParsers ? [ ],
-  rebuildWithTSParsers ? false,
 }:
 
 let
   binPath = lib.makeBinPath ([ git ] ++ extraBinPath);
 
-  bundled-parsers = with vimPlugins.nvim-treesitter-parsers; [
-    c
-    lua
-    vim
-    vimdoc
-    query
-    python
-    bash
-    markdown
-    markdown_inline
-  ];
-
-  parsers = symlinkJoin {
-    name = "nvim-ts-parsers";
-    paths = bundled-parsers ++ extraTSParsers;
-  };
-
   preInit =
+    # lua
     ''
       -- Globals
       vim.g.is_nix_package = 1
     ''
-    + lib.optionalString (!rebuildWithTSParsers) ''
-      -- Add TS parsers to 'runtimepath'
-      vim.opt.runtimepath:prepend '${parsers}'
-      -- lazy.nvim resets 'rtp', so we need global to set 'rtp' inside cfg
-      vim.g.nix_ts_parsers = '${parsers}'
-    ''
-    + lib.optionalString (repo != null) ''
-      -- Bootstrap cfg
-      local repo = '${repo}'
-      local cfg_path = vim.fn.stdpath 'config'
+    +
+      lib.optionalString (repo != null) # lua
+        ''
+          -- Bootstrap cfg
+          local repo = '${repo}'
+          local cfg_path = vim.fn.stdpath 'config'
 
-      if vim.loop.fs_stat(cfg_path) then
-        if
-          vim.fn
-            .system({
-              'env',
-              '-S',
-              '-i',
-              'HOME="$HOME"',
-              '${git}/bin/git',
-              '-C',
-              vim.fn.stdpath 'config',
-              'remote',
-              'get-url',
-              'origin',
-            })
-            :find(repo, 1, true)
-        then
-          return
-        end
-        vim.loop.fs_rename(cfg_path, cfg_path .. '_backup_' .. os.date '%H%M%S_%d-%m-%Y')
-      end
+          if vim.loop.fs_stat(cfg_path) then
+            if
+              vim.fn
+                .system({
+                  'env',
+                  '-S',
+                  '-i',
+                  'HOME="$HOME"',
+                  '${git}/bin/git',
+                  '-C',
+                  vim.fn.stdpath 'config',
+                  'remote',
+                  'get-url',
+                  'origin',
+                })
+                :find(repo, 1, true)
+            then
+              return
+            end
+            vim.loop.fs_rename(cfg_path, cfg_path .. '_backup_' .. os.date '%H%M%S_%d-%m-%Y')
+          end
 
-      vim.fn.system({ '${git}/bin/git', 'clone', repo, cfg_path })
-    ''
+          vim.fn.system({ '${git}/bin/git', 'clone', repo, cfg_path })
+        ''
     + additionalPreInit;
 
   config =
@@ -117,19 +93,5 @@ let
         ]
         ++ additionalWrapperArgs;
     };
-
-  neovim-package =
-    if rebuildWithTSParsers then
-      (neovim-unwrapped.override { treesitter-parsers = { }; }).overrideAttrs (
-        oa: {
-          preConfigure =
-            oa.preConfigure
-            + ''
-              cp -f ${parsers}/parser/* $out/lib/nvim/parser/
-            '';
-        }
-      )
-    else
-      neovim-unwrapped;
 in
-wrapNeovimUnstable neovim-package config
+wrapNeovimUnstable neovim-unwrapped config

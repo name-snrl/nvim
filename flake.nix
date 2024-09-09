@@ -86,7 +86,7 @@
             treefmt = {
               projectRootFile = "flake.nix";
               programs = {
-                nixfmt-rfc-style.enable = true;
+                nixfmt.enable = true;
                 deadnix.enable = true;
                 statix.enable = true; # fix, if possible
                 stylua.enable = true;
@@ -107,7 +107,10 @@
 
             pre-commit.settings = {
               hooks = {
-                treefmt.enable = true;
+                treefmt = {
+                  enable = true;
+                  package = config.treefmt.build.wrapper;
+                };
                 statix.enable = true; # check. not everything can be fixed, but we need to know what
                 selene = {
                   enable = true;
@@ -117,7 +120,6 @@
                   types = [ "lua" ];
                 };
               };
-              settings.treefmt.package = config.treefmt.build.wrapper;
             };
 
             devShells.default =

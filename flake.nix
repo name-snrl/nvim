@@ -3,8 +3,8 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nvim-nightly = {
-      url = "github:neovim/neovim?dir=contrib";
+    neovim-nightly-overlay = {
+      url = "github:nix-community/neovim-nightly-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     flake-parts = {
@@ -58,7 +58,7 @@
               // {
                 extraName = "-test-nightly";
                 rebuildWithTSParsers = true;
-                neovim-unwrapped = inputs'.nvim-nightly.packages.neovim;
+                neovim-unwrapped = inputs'.neovim-nightly-overlay.packages.neovim;
               }
             );
             test-stable = nvim.override (overrides // { extraName = "-test-stable"; });
@@ -119,7 +119,7 @@
                           --commit-lock-file \
                           --inputs-from self \
                           --override-input nixpkgs nixpkgs \
-                          --override-input nvim-nightly 'flake:nvim-nightly?dir=contrib' &&
+                          --override-input neovim-nightly-overlay neovim-nightly-overlay &&
                           direnv reload
                     '';
                   })
